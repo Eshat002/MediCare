@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         "link-color": "#062126",
+        primary: "#24BEE0",
       },
     },
   },
