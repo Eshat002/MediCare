@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        "link-color": "#062126",
         primary: "#24BEE0",
+        primaryBlack: "#062126",
       },
     },
   },

@@ -1,7 +1,8 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import { FaBars, FaTimes } from "react-icons/fa";
+// import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { FaBars, FaTimes, FaHome } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,31 +21,31 @@ const Navbar = () => {
         <div className="hidden lg:flex space-x-8">
           <a
             href="#"
-            className="text-link-color text-base hover:text-sky-400 capitalize"
+            className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             Home
           </a>
           <a
             href="#"
-            className="text-link-color text-base hover:text-sky-400 capitalize"
+            className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             About
           </a>
           <a
             href="#"
-            className="text-link-color text-base hover:text-sky-400 capitalize"
+            className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             Services
           </a>
           <a
             href="#"
-            className="text-link-color text-base hover:text-sky-400 capitalize"
+            className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             Contact
           </a>
           <a
             href="#"
-            className="text-link-color text-base hover:text-sky-400 capitalize"
+            className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             blog
           </a>
@@ -65,37 +66,37 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden bg-white flex flex-col space-y-4 py-4 transition ease-linear md:text-center duration-300 ${
+        className={`lg:hidden bg-white flex flex-col space-y-4 py-4 transition ease-linear container mx-auto duration-300 ${
           isOpen ? "block" : "hidden"
         }`}
       >
         <a
           href="#"
-          className="text-link-color pt-2 text-base hover:text-sky-400 capitalize"
+          className="text-primaryBlack pt-2 text-base hover:text-sky-400 capitalize"
         >
           Home
         </a>
         <a
           href="#"
-          className="text-link-color text-base hover:text-sky-400 capitalize"
+          className="text-primaryBlack text-base hover:text-sky-400 capitalize"
         >
           About
         </a>
         <a
           href="#"
-          className="text-link-color text-base hover:text-sky-400 capitalize"
+          className="text-primaryBlack text-base hover:text-sky-400 capitalize"
         >
           Services
         </a>
         <a
           href="#"
-          className="text-link-color text-base hover:text-sky-400 capitalize"
+          className="text-primaryBlack text-base hover:text-sky-400 capitalize"
         >
           Contact
         </a>
         <a
           href="#"
-          className="text-link-color text-base pb-2 hover:text-sky-400 capitalize"
+          className="text-primaryBlack text-base pb-2 hover:text-sky-400 capitalize"
         >
           Blog
         </a>
