@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
-// import { FaBars, FaTimes } from "react-icons/fa";
-import { useState } from "react";
-import { FaBars, FaTimes, FaHome } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,12 +10,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="px-8 lg:px-14 py-5">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="text-white">
+    <nav className="bg-white py-5">
+      <div className="container mx-auto px-8 lg:px-14 flex items-center justify-between">
+        {/* Logo Section */}
+        <div className="relative z-50">
           <img width={150} src={logo} alt="logo" />
         </div>
 
+        {/* Navbar Links for Desktop */}
         <div className="hidden lg:flex space-x-8">
           <a
             href="#"
@@ -47,16 +47,18 @@ const Navbar = () => {
             href="#"
             className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
-            blog
+            Blog
           </a>
         </div>
-        {/* Mobile menu icon */}
-        <div className="lg:hidden">
+
+        {/* Mobile Menu Icon */}
+        <div className="lg:hidden z-50">
           <button onClick={toggleMenu} className="text-2xl">
             {isOpen ? <FaTimes /> : <FaBars />} {/* Icon toggles */}
           </button>
         </div>
-        {/* Make Appointment button */}
+
+        {/* Make Appointment Button for Desktop */}
         <div className="hidden lg:block">
           <button className="bg-primary text-white px-6 py-2 rounded-full hover:bg-sky-500">
             Make Appointment
@@ -66,7 +68,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden bg-white flex flex-col space-y-4 py-4 transition ease-linear container mx-auto duration-300 ${
+        className={`lg:hidden bg-white fixed z-20 w-full h-full sm:text-center flex flex-col space-y-4 py-4 transition-all ease-linear duration-300 px-8 lg:px-14 ${
           isOpen ? "block" : "hidden"
         }`}
       >
