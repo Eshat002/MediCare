@@ -1,6 +1,10 @@
 import React from "react";
-import { BsFillCalendarDateFill } from "react-icons/bs";
 import Calender from "../assets/svg/Calender.jsx";
+import { BsPeopleFill } from "react-icons/bs";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoMailOpen } from "react-icons/io5";
+import { TiArrowRight } from "react-icons/ti";
+import BtnWithIcon from "./BtnWithIcon.jsx";
 
 const Hero = () => {
   return (
@@ -16,7 +20,7 @@ const Hero = () => {
             Our professional team will take care of you, we value your time and
             health.
           </p>
-          <div className="note flex gap-5 bg-primaryOrange/10">
+          <div className="note flex gap-5 bg-primaryOrange/5">
             <div className="">
               <div className="flex items-start gap-3">
                 {/* <BsFillCalendarDateFill
@@ -36,58 +40,56 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <BsFillCalendarDateFill
-                  size="24px"
-                  color="#CF7D4E"
-                  className="mt-1"
-                />
+                <FaLocationDot size="24px" color="#CF7D4E" className="mt-1" />
                 <div className="opacity-80">
                   <p className="text-base font-semibold text-primaryBlack">
-                    Make an Appointment
+                    Visit the clinic
                   </p>
                   <p className="text-sm font-medium text-primaryBlack">
-                    Select best time for you.
+                    take care of your issues
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex flex-col">
               <div className="flex items-start gap-3">
-                <BsFillCalendarDateFill
-                  size="24px"
-                  color="#CF7D4E"
-                  className="mt-1"
-                />
+                <BsPeopleFill size="24px" color="#CF7D4E" className="mt-1" />
                 <div className="opacity-80">
                   <p className="text-base font-semibold text-primaryBlack">
-                    Make an Appointment
+                    Find the Best Doctor
                   </p>
                   <p className="text-sm font-medium text-primaryBlack">
-                    Select best time for you.
+                    find the best doctor in a minute
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <BsFillCalendarDateFill
-                  size="24px"
-                  color="#CF7D4E"
-                  className="mt-1"
-                />
+                <IoMailOpen size="26px" color="#CF7D4E" className="mt-1" />
                 <div className="opacity-80">
                   <p className="text-base font-semibold text-primaryBlack">
-                    Make an Appointment
+                    Ask Questions
                   </p>
                   <p className="text-sm font-medium text-primaryBlack">
-                    Select best time for you.
+                    Ask questions any time
                   </p>
                 </div>
               </div>
             </div>
           </div>
-
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700">
-            Get Started
-          </button>
+          <div className="btn-n-time-container items-center gap-6 flex mt-5">
+            <BtnWithIcon
+              text="Make Appointment"
+              icon={<TiArrowRight size={24} />}
+            />
+            <div className="time text-primaryOrange font-medium text-base">
+              <p>
+                <span className="mr-4">Mon-Fri </span>10AM-9PM
+              </p>
+              <p>
+                <span className="mr-4">Sat</span> 10AM-2PM
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Right Section: Image */}
