@@ -8,33 +8,29 @@ import BtnWithIcon from "./BtnWithIcon.jsx";
 
 const Hero = () => {
   return (
-    <section className="py-12">
-      <div className="container mx-auto px-8 lg:px-14 flex flex-col-reverse lg:flex-row items-center">
+    <section className="mt-20">
+      <div className="container mx-auto px-8 lg:px-16 flex flex-col-reverse gap-16 lg:flex-row items-center">
         {/* Left Section: Text Details */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          <h1 className="flex flex-col text-6xl font-bold text-primaryBlack">
-            <span className="mb-4">Feel Comfort</span>
-            <span>Be Healthy</span>
+          <h1 className="flex flex-col text-6xl font-bold text-balance text-primaryBlack leading-[4rem]	 mb-3">
+            {/* <span className="mb-4">Feel Comfort</span>
+            <span>Be Healthy</span> */}
+            Feel Comfort Be Healthy
           </h1>
-          <p className="text-xl font-normal text-primaryBlack opacity-70 mb-6">
+          <p className="text-xl font-normal text-primaryBlack opacity-70 mb-6 py-5 text-balance">
             Our professional team will take care of you, we value your time and
             health.
           </p>
-          <div className="note flex gap-5 bg-primaryOrange/5">
-            <div className="">
-              <div className="flex items-start gap-3">
-                {/* <BsFillCalendarDateFill
-                  size="24px"
-                  color="#CF7D4E"
-                  className="mt-1"
-                /> */}
+          <div className="note flex gap-5 p-12 rounded-3xl space-x-4 mb-11 bg-primaryOrange/5">
+            <div className="flex flex-col">
+              <div className="flex items-start gap-3 mb-5">
                 <Calender />
 
                 <div className="opacity-80">
                   <p className="text-base font-semibold text-primaryBlack">
                     Make an Appointment
                   </p>
-                  <p className="text-sm font-medium text-primaryBlack">
+                  <p className="text-sm font-medium text-primaryBlack leading-7">
                     Select best time for you.
                   </p>
                 </div>
@@ -45,20 +41,20 @@ const Hero = () => {
                   <p className="text-base font-semibold text-primaryBlack">
                     Visit the clinic
                   </p>
-                  <p className="text-sm font-medium text-primaryBlack">
+                  <p className="text-sm font-medium text-primaryBlack leading-7">
                     take care of your issues
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex flex-col">
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3 mb-4">
                 <BsPeopleFill size="24px" color="#CF7D4E" className="mt-1" />
                 <div className="opacity-80">
                   <p className="text-base font-semibold text-primaryBlack">
                     Find the Best Doctor
                   </p>
-                  <p className="text-sm font-medium text-primaryBlack">
+                  <p className="text-sm font-medium text-primaryBlack leading-7">
                     find the best doctor in a minute
                   </p>
                 </div>
@@ -69,14 +65,14 @@ const Hero = () => {
                   <p className="text-base font-semibold text-primaryBlack">
                     Ask Questions
                   </p>
-                  <p className="text-sm font-medium text-primaryBlack">
+                  <p className="text-sm font-medium text-primaryBlack leading-7">
                     Ask questions any time
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="btn-n-time-container items-center gap-6 flex mt-5">
+          <div className="btn-n-time-container items-center gap-8 flex mt-5">
             <BtnWithIcon
               text="Make Appointment"
               icon={<TiArrowRight size={24} />}
