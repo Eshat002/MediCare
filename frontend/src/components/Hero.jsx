@@ -5,14 +5,15 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMailOpen } from "react-icons/io5";
 import { TiArrowRight } from "react-icons/ti";
 import BtnWithIcon from "./BtnWithIcon.jsx";
+import HeroImage from "../assets/Img/HeroImage.png";
 
 const Hero = () => {
   return (
     <section className="mt-20">
-      <div className="container mx-auto px-8 lg:px-16 flex flex-col-reverse gap-16 lg:flex-row items-center">
+      <div className="container mx-auto px-8 lg:px-6 flex flex-col-reverse gap-16 lg:flex-row justify-center items-start">
         {/* Left Section: Text Details */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          <h1 className="flex flex-col text-6xl font-bold text-balance text-primaryBlack leading-[4rem]	 mb-3">
+          <h1 className="flex flex-col text-7xl font-bold text-balance text-primaryBlack leading-[5rem]	 mb-3">
             {/* <span className="mb-4">Feel Comfort</span>
             <span>Be Healthy</span> */}
             Feel Comfort Be Healthy
@@ -21,7 +22,7 @@ const Hero = () => {
             Our professional team will take care of you, we value your time and
             health.
           </p>
-          <div className="note flex gap-5 p-12 rounded-3xl space-x-4 mb-11 bg-primaryOrange/5">
+          <div className="note flex gap-5 p-14 rounded-3xl space-x-4 mb-16 mt-12 bg-primaryOrange/5">
             <div className="flex flex-col">
               <div className="flex items-start gap-3 mb-5">
                 <Calender />
@@ -89,9 +90,9 @@ const Hero = () => {
         </div>
 
         {/* Right Section: Image */}
-        <div className="lg:w-1/2 mb-8 lg:mb-0">
+        <div className="lg:w-1/3 mb-8 lg:mb-0">
           <img
-            src="https://via.placeholder.com/400x300"
+            src={HeroImage}
             alt="Hero"
             className="w-full h-auto object-cover rounded-md shadow-lg"
           />
