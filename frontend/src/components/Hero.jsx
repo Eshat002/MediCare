@@ -6,23 +6,24 @@ import { IoMailOpen } from "react-icons/io5";
 import { TiArrowRight } from "react-icons/ti";
 import BtnWithIcon from "./BtnWithIcon.jsx";
 import HeroImage from "../assets/Img/HeroImage.png";
+import HeroImageMobile from "../assets/Img/HeroImageMobile.png";
 
 const Hero = () => {
   return (
-    <section className="mt-20">
-      <div className="container mx-auto px-8 lg:px-6 flex flex-col-reverse gap-16 lg:flex-row justify-center items-start">
+    <section className="mt-10 lg:mt-20  mb-20">
+      <div className="container mx-auto px-8 lg:px-6 flex flex-col-reverse gap-6 lg:gap-16 lg:flex-row justify-center items-start">
         {/* Left Section: Text Details */}
-        <div className="lg:w-1/2 text-center lg:text-left">
-          <h1 className="flex flex-col text-7xl font-bold text-balance text-primaryBlack leading-[5rem]	 mb-3">
+        <div className="lg:w-1/2 lg:text-left">
+          <h1 className="flex flex-col text-5xl lg:text-7xl font-bold text-balance text-primaryBlack leading-[4rem] sm:leading-[6rem] lg:leading-[5rem]	 mb-4">
             {/* <span className="mb-4">Feel Comfort</span>
             <span>Be Healthy</span> */}
             Feel Comfort Be Healthy
           </h1>
-          <p className="text-xl font-normal text-primaryBlack opacity-70 mb-6 py-5 text-balance">
+          <p className="text-xl font-normal text-primaryBlack opacity-70 py-0 lg:py-5 lg:text-balance pr-12">
             Our professional team will take care of you, we value your time and
             health.
           </p>
-          <div className="note flex gap-5 p-14 rounded-3xl space-x-4 mb-16 mt-12 bg-primaryOrange/5">
+          <div className="note flex gap-5 p-10 lg:p-14 rounded-3xl space-x-4 mb-16 mt-10 bg-primaryOrange/5">
             <div className="flex flex-col">
               <div className="flex items-start gap-3 mb-5">
                 <Calender />
@@ -90,11 +91,16 @@ const Hero = () => {
         </div>
 
         {/* Right Section: Image */}
-        <div className="lg:w-1/3 mb-8 lg:mb-0">
+        <div className="lg:w-1/3 mb-0 rounded-3xl">
           <img
             src={HeroImage}
             alt="Hero"
-            className="w-full h-auto object-cover rounded-md shadow-lg"
+            className="lg:block hidden w-full h-auto object-cover rounded-md shadow-3xl"
+          />
+          <img
+            src={HeroImageMobile}
+            alt="Hero-Mobile"
+            className="lg:hidden block w-full h-auto object-cover rounded-3xl shadow-md"
           />
         </div>
       </div>
