@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white py-5">
+    <nav className="bg-white sticky top-0 z-50 py-5">
       <div className="container mx-auto px-8 lg:px-14 flex items-center justify-between">
         {/* Logo Section */}
         <div className="relative z-50">
