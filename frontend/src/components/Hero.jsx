@@ -11,7 +11,7 @@ import HeroImageMobile from "../assets/Img/HeroImageMobile.png";
 const Hero = () => {
   return (
     <section className="mt-10 lg:mt-20  mb-20">
-      <div className="container mx-auto px-8 lg:px-6 flex flex-col-reverse gap-6 lg:gap-16 lg:flex-row justify-center items-start">
+      <div className="container mx-auto px-8 lg:px-0 flex flex-col-reverse gap-6 lg:gap-16 lg:flex-row justify-center  items-start">
         {/* Left Section: Text Details */}
         <div className="lg:w-1/2 lg:text-left">
           <h1 className="flex flex-col text-5xl lg:text-7xl font-bold text-balance text-primaryBlack leading-[4rem] sm:leading-[6rem] lg:leading-[5rem]	 mb-4">
