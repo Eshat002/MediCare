@@ -11,6 +11,9 @@ const Service = () => {
   return (
     <section className="service">
       <div className="container mx-auto px-8 lg:px-24">
+        <h2 className="font-bold text-4xl text-primaryBlack mb-10">
+          Our Services
+        </h2>
         <Swiper
           // install Swiper modules
           modules={[Pagination]}
@@ -26,6 +29,9 @@ const Service = () => {
               className="object-cover w-full"
               alt="doctor"
             />
+            <h4 className="font-medium text-xl capitalize text-primaryBlack my-4">
+              Immediate Care
+            </h4>
           </SwiperSlide>
           <SwiperSlide>
             <img
@@ -33,6 +39,10 @@ const Service = () => {
               src={SwiperImage2}
               alt="doctor"
             />
+            <h4 className="font-medium text-xl capitalize text-primaryBlack my-4">
+              {" "}
+              Dental Care{" "}
+            </h4>
           </SwiperSlide>
           <SwiperSlide>
             <img
@@ -40,6 +50,10 @@ const Service = () => {
               src={SwiperImage3}
               alt="doctor"
             />
+            <h4 className="font-medium text-xl capitalize text-primaryBlack my-4">
+              {" "}
+              Diagnostic Center{" "}
+            </h4>
           </SwiperSlide>
           <SwiperSlide>
             <img
@@ -47,6 +61,10 @@ const Service = () => {
               src={SwiperImage1}
               alt="doctor"
             />
+            <h4 className="font-medium text-xl capitalize text-primaryBlack my-4">
+              {" "}
+              Immediate Care
+            </h4>
           </SwiperSlide>
 
           <SwiperSlide>
@@ -55,6 +73,10 @@ const Service = () => {
               src={SwiperImage2}
               alt="doctor"
             />
+            <h4 className="font-medium text-xl capitalize text-primaryBlack my-4">
+              {" "}
+              Diagnostic Center
+            </h4>
           </SwiperSlide>
           <SwiperSlide>
             <img
@@ -62,6 +84,10 @@ const Service = () => {
               src={SwiperImage3}
               alt="doctor"
             />
+            <h4 className="font-medium text-xl capitalize text-primaryBlack my-4">
+              {" "}
+              Dental Care
+            </h4>
           </SwiperSlide>
         </Swiper>
       </div>
