@@ -24,3 +24,57 @@ a {
 /* .swiper-pagination-bullet-active {
   @apply w-3 h-3 bg-primary/50  
 }  */
+
+/* .swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "" !important;
+}
+
+.swiper-button-prev {
+  background-image: url("./assets/Img/Prev.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  position: absolute;
+  top: 120px;
+}
+
+.swiper-button-next {
+  background-image: url("./assets/Img/Next.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  position: absolute;
+  top: 0px;
+  top: 120px;
+} */
+
+.custom-arrows {
+  position: absolute;
+  top: 0; /* Align to the top */
+  right: 0; /* Align to the right */
+  display: flex;
+  gap: 10px; /* Space between the arrows */
+  z-index: 50;
+  margin-top: 10px;
+}
+
+.swiper-button-prev-custom img,
+.swiper-button-next-custom img {
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+  opacity: 1; /* Default opacity */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+.swiper-button-prev-custom img:hover,
+.swiper-button-next-custom img:hover {
+  opacity: 0.7; /* Slight hover effect */
+}
+
+/* Styling for disabled state */
+.swiper-button-disabled img {
+  opacity: 0.3; /* Faded look when there's no more to scroll */
+  cursor: not-allowed; /* Change cursor to indicate the arrow is disabled */
+}
