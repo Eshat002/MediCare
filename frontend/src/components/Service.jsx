@@ -10,11 +10,36 @@ import PrevArrow from "../assets/Img/Prev.png"; // Custom previous arrow
 import NextArrow from "../assets/Img/Next.png"; // Custom next arrow
 
 const Service = () => {
+  const swiperBreakpoints = {
+    // When the window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    // When the window width is >= 640px
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+    },
+    // When the window width is >= 1024px
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    // When the window width is >= 1280px
+    1280: {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
+  };
+
   return (
     <section className="service relative">
       <div className="container mx-auto px-8 lg:px-24">
-        <div className="flex justify-between align-center py-12">
-          <h2 className="font-bold text-4xl text-primaryBlack">Our Services</h2>
+        <div className="flex justify-between items-center py-12">
+          <h2 className="font-bold lg:text-4xl text-2xl text-primaryBlack">
+            Our Services
+          </h2>
 
           {/* Custom Navigation Buttons */}
           <div className="custom-arrows flex space-x-4 z-50">
@@ -33,11 +58,12 @@ const Service = () => {
             prevEl: ".swiper-button-prev-custom", // Target custom prev button
             nextEl: ".swiper-button-next-custom", // Target custom next button
           }}
-          spaceBetween={40}
+          // spaceBetween={40}
           slidesPerView={4}
           pagination={{ clickable: true }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
+          breakpoints={swiperBreakpoints}
         >
           <SwiperSlide>
             <img

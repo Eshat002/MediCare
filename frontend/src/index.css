@@ -23,7 +23,7 @@ a {
 
 .swiper-button-prev-custom img,
 .swiper-button-next-custom img {
-  @apply w-10 h-auto cursor-pointer opacity-100 transition-opacity;
+  @apply lg:w-10 w-8 h-auto cursor-pointer opacity-100 transition-opacity;
 }
 
 .swiper-button-prev-custom img:hover,
