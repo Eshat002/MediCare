@@ -8,6 +8,7 @@ import SwiperImage2 from "../assets/Img/SwiperImage2.png";
 import SwiperImage3 from "../assets/Img/SwiperImage3.png";
 import PrevArrow from "../assets/Img/Prev.png"; // Custom previous arrow
 import NextArrow from "../assets/Img/Next.png"; // Custom next arrow
+import SectionHeadline from "./SectionHeadline";
 
 const Service = () => {
   const swiperBreakpoints = {
@@ -37,9 +38,9 @@ const Service = () => {
     <section className="service relative">
       <div className="container mx-auto px-8 lg:px-24">
         <div className="flex justify-between items-center py-12">
-          <h2 className="font-bold lg:text-4xl text-2xl text-primaryBlack">
-            Our Services
-          </h2>
+          <div className="section-headline-container">
+            <SectionHeadline text={"our services"} />
+          </div>
 
           {/* Custom Navigation Buttons */}
           <div className="custom-arrows flex space-x-4 z-50">
