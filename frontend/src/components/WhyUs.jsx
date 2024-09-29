@@ -11,11 +11,11 @@ import Clean from "../assets/Img/Clean.png";
 const WhyUs = () => {
   return (
     <section className="mt-20" id="whyUs">
-      <div className="container mx-auto justify-center px-24">
-        <div className="section-headline-container mb-14">
+      <div className="container mx-auto justify-center lg:px-24 px-6">
+        <div className="section-headline-container mb-14 lg:text-start text-center">
           <SectionHeadline text="why us?" />
         </div>
-        <div className="why-us-card-container grid grid-cols-3">
+        <div className="why-us-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-5 gap-0">
           <WhyUsCard
             img={DNA}
             title="DNA Diagnostics"

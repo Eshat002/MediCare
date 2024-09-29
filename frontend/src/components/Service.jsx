@@ -43,7 +43,7 @@ const Service = () => {
           </div>
 
           {/* Custom Navigation Buttons */}
-          <div className="custom-arrows flex space-x-4 z-50">
+          <div className="custom-arrows flex space-x-4 z-60">
             <div className="swiper-button-prev-custom">
               <img src={PrevArrow} alt="Previous" />
             </div>
