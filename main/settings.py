@@ -112,3 +112,70 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.templatetags.static import static
+
+
+UNFOLD = {
+    "SITE_TITLE": None,
+    "SITE_HEADER": 'MediCare Admin',
+    "SITE_URL": "/",
+ 
+    "STYLES": [
+        lambda request: static("css/style.css"),
+    ],
+    "SCRIPTS": [
+        lambda request: static("js/script.js"),
+    ],
+    "COLORS": {
+        "primary": {
+            "50": "250 245 255",
+            "100": "243 232 255",
+            "200": "233 213 255",
+            "300": "216 180 254",
+            "400": "192 132 252",
+            "500": "168 85 247",
+            "600": "147 51 234",
+            "700": "126 34 206",
+            "800": "107 33 168",
+            "900": "88 28 135",
+        },
+    },
+    "EXTENSIONS": {
+        "modeltranslation": {
+            "flags": {
+                "en": "🇬🇧",
+                "fr": "🇫🇷",
+                "nl": "🇧🇪",
+            },
+        },
+    },
+  
+    #   "SIDEBAR": {
+    #     "show_search": True,   
+    #     "show_all_applications": True,   
+    #     "navigation": [
+    #         {
+    #             "title": _("Navigation"),
+    #             "separator": True,  
+    #             "items": [
+    #                 {
+    #                     "title": _("Dashboard"),
+    #                     "icon": "dashboard",   
+    #                     "link": reverse_lazy("admin:index"),
+    #                     # "badge": "sample_app.badge_callback",
+    #                 },
+                   
+    #             ],
+    #         },
+    #     ],
+    # },
+   
+}
+
+
+ 
