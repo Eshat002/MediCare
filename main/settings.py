@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "doctor"
+    "doctor",
+    "global"
 ]
 
 MIDDLEWARE = [
@@ -155,26 +156,6 @@ UNFOLD = {
         },
     },
   
-    #   "SIDEBAR": {
-    #     "show_search": True,   
-    #     "show_all_applications": True,   
-    #     "navigation": [
-    #         {
-    #             "title": _("Navigation"),
-    #             "separator": True,  
-    #             "items": [
-    #                 {
-    #                     "title": _("Dashboard"),
-    #                     "icon": "dashboard",   
-    #                     "link": reverse_lazy("admin:index"),
-    #                     # "badge": "sample_app.badge_callback",
-    #                 },
-                   
-    #             ],
-    #         },
-    #     ],
-    # },
-   
 }
 
 
