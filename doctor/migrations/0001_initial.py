@@ -7,28 +7,59 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Doctor',
+            name="Doctor",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=100)),
-                ('last_name', models.CharField(max_length=100)),
-                ('specialization', models.CharField(choices=[('cardiology', 'Cardiology Doctor'), ('neurology', 'Neurology Doctor'), ('orthopedics', 'Orthopedics Doctor'), ('pediatrics', 'Pediatrics Doctor'), ('dermatology', 'Dermatology Doctor'), ('leading_diagnostic', 'Leading Diagnostic Doctor'), ('consultant_dentist', 'Consultant Dentist')], max_length=50)),
-                ('years_of_experience', models.PositiveIntegerField()),
-                ('email', models.EmailField(max_length=254)),
-                ('phone', models.CharField(max_length=15)),
-                ('gender', models.CharField(choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')], max_length=10)),
-                ('available', models.BooleanField(default=True)),
-                ('date_joined', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=100)),
+                ("last_name", models.CharField(max_length=100)),
+                (
+                    "specialization",
+                    models.CharField(
+                        choices=[
+                            ("cardiology", "Cardiology Doctor"),
+                            ("neurology", "Neurology Doctor"),
+                            ("orthopedics", "Orthopedics Doctor"),
+                            ("pediatrics", "Pediatrics Doctor"),
+                            ("dermatology", "Dermatology Doctor"),
+                            ("leading_diagnostic", "Leading Diagnostic Doctor"),
+                            ("consultant_dentist", "Consultant Dentist"),
+                        ],
+                        max_length=50,
+                    ),
+                ),
+                ("years_of_experience", models.PositiveIntegerField()),
+                ("email", models.EmailField(max_length=254)),
+                ("phone", models.CharField(max_length=15)),
+                (
+                    "gender",
+                    models.CharField(
+                        choices=[
+                            ("male", "Male"),
+                            ("female", "Female"),
+                            ("other", "Other"),
+                        ],
+                        max_length=10,
+                    ),
+                ),
+                ("available", models.BooleanField(default=True)),
+                ("date_joined", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name': 'Doctor',
-                'verbose_name_plural': 'Doctors',
-                'ordering': ['-date_joined'],
+                "verbose_name": "Doctor",
+                "verbose_name_plural": "Doctors",
+                "ordering": ["-date_joined"],
             },
         ),
     ]

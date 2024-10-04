@@ -1,5 +1,9 @@
 from pathlib import Path
 from decouple import config
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.templatetags.static import static
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +24,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    'unfold',
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -28,7 +32,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "doctor",
-    "global"
+    "global",
+    # thrid_party
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -108,6 +114,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "static_root"
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media_root"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -115,17 +127,10 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-
-from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
-from django.templatetags.static import static
-
-
 UNFOLD = {
     "SITE_TITLE": None,
-    "SITE_HEADER": 'MediCare Admin',
+    "SITE_HEADER": "MediCare Admin",
     "SITE_URL": "/",
- 
     "STYLES": [
         lambda request: static("css/style.css"),
     ],
@@ -155,8 +160,4 @@ UNFOLD = {
             },
         },
     },
-  
 }
-
-
- 
