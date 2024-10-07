@@ -2,17 +2,56 @@ import React from "react";
 import SectionHeadline from "./SectionHeadline";
 import DoctorCard from "./DoctorCard";
 import BtnWithIcon from "./BtnWithIcon";
+import { TiArrowRight } from "react-icons/ti";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Doctors = () => {
+const BaseUrl = import.meta.env.VITE_API_URL;
+
+const Doctors = ({ count = 6 }) => {
+  const [doctors, setDoctors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await axios.get(
+          `${BaseUrl}/api/doctors?count=${count}`
+        );
+        console.log("data", response);
+        setDoctors(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDoctors();
+  }, [count]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <section className="mt-20" id="Doctors">
       <div className="container mx-auto justify-center lg:px-24 px-6">
-        <div className="section-headline-container mb-14 flex justify-between">
+        <div className="section-headline-container mb-12 flex flex-col lg:flex-row lg:justify-between items-center gap-5">
           <SectionHeadline text="Our Qualified Doctors" />
-          <BtnWithIcon text="me" />
+          <button className="bg-transparent border-2 border-bronze shadow-lg text-lg font-medium flex items-center text-bronze px-6 py-3 rounded-full hover:bg-bronze hover:text-white">
+            <span className="me-2">See All Doctors</span>
+            <TiArrowRight size={24} />
+          </button>
         </div>
         <div className="doctor-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-5 gap-0">
-          <DoctorCard />
+          {doctors.map((doctor) => (
+            <DoctorCard key={doctor.id} />
+          ))}
         </div>
       </div>
     </section>
