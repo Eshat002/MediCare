@@ -25,7 +25,7 @@ const WhyUs = () => {
             img={Insurance}
             title="Insurance"
             text="You can get our insurance to not care of any financial difficulties in future."
-            customClass="bg-white drop-shadow-[0_25px_45px_rgba(135,206,235,0.2)]"
+            customClass="bg-white drop-shadow-[0_25px_45px_rgba(135,206,235,0.3)]"
           />
           <WhyUsCard
             img={MediSupport}

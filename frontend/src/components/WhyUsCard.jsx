@@ -4,8 +4,7 @@ const WhyUsCard = ({ img, title, text, customClass = "" }) => {
   return (
     <div
       className={`${customClass} whyUsCard lg:mb-14 mb-4 xl:px-8 px-7 xl:py-14 py-10 rounded-3xl
-      hover:bg-white hover:drop-shadow-[0_25px_45px_rgba(135,206,235,0.2)] transition-all duration-300 ease-in-out
-      
+      hover:bg-white hover:drop-shadow-[0_25px_45px_rgba(135,206,235,0.3)] transition-all duration-300 ease-in-out
       `}
     >
       <img className="w-20 h-auto object-cover" src={img} alt="DNA image" />

@@ -8,8 +8,8 @@ class Doctor(models.Model):
         ("orthopedics", "Orthopedics Doctor"),
         ("pediatrics", "Pediatrics Doctor"),
         ("dermatology", "Dermatology Doctor"),
-        ("leading_diagnostic", "Leading Diagnostic Doctor"),
-        ("consultant_dentist", "Consultant Dentist"),
+        ("leading diagnostic", "Leading Diagnostic Doctor"),
+        ("consultant dentist", "Consultant Dentist"),
     ]
 
     GENDER_CHOICES = [
@@ -27,9 +27,10 @@ class Doctor(models.Model):
     phone = models.CharField(max_length=15)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     available = models.BooleanField(default=True)
-    happy_clients = models.PositiveIntegerField()
+    happy_patients = models.PositiveIntegerField()
     doctor_at = models.CharField(max_length=100, default="iMedical Central Clinic, LA")
     date_joined = models.DateTimeField(auto_now_add=True)
+    shadow=models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-date_joined"]

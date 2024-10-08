@@ -1,7 +1,6 @@
 import React from "react";
 import SectionHeadline from "./SectionHeadline";
 import DoctorCard from "./DoctorCard";
-import BtnWithIcon from "./BtnWithIcon";
 import { TiArrowRight } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -39,7 +38,7 @@ const Doctors = ({ count = 6 }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <section className="mt-20" id="Doctors">
+    <section className="mt-20 bg-bronze/5" id="Doctors">
       <div className="container mx-auto justify-center lg:px-24 px-6">
         <div className="section-headline-container mb-12 flex flex-col lg:flex-row lg:justify-between items-center gap-5">
           <SectionHeadline text="Our Qualified Doctors" />
@@ -48,9 +47,17 @@ const Doctors = ({ count = 6 }) => {
             <TiArrowRight size={24} />
           </button>
         </div>
-        <div className="doctor-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-5 gap-0">
+        <div className="doctor-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-7 gap-0">
           {doctors.map((doctor) => (
-            <DoctorCard key={doctor.id} />
+            <DoctorCard
+              key={doctor.id}
+              full_name={doctor.full_name}
+              avatar={doctor.avatar}
+              happy_patients={doctor.happy_patients}
+              specialization={doctor.specialization}
+              doctor_at={doctor.doctor_at}
+              shadow={doctor.shadow}
+            />
           ))}
         </div>
       </div>
