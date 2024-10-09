@@ -33,7 +33,7 @@ class Doctor(models.Model):
     shadow=models.BooleanField(default=False)
 
     class Meta:
-        ordering = ["-date_joined"]
+        ordering = ["date_joined"]
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.specialization}"
