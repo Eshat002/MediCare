@@ -47,7 +47,7 @@ const Doctors = ({ count = 6 }) => {
             <TiArrowRight size={24} />
           </button>
         </div>
-        <div className="doctor-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-7 gap-0">
+        <div className="doctor-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-7 gap-5">
           {doctors.map((doctor) => (
             <DoctorCard
               key={doctor.id}
