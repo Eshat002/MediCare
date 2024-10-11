@@ -4,6 +4,7 @@ import DoctorCard from "./DoctorCard";
 import { TiArrowRight } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import DoctorCardSkeleton from "./DoctorCardSkeleton";
 
 const BaseUrl = import.meta.env.VITE_API_URL;
 
@@ -18,12 +19,13 @@ const Doctors = ({ count = 6 }) => {
         const response = await axios.get(
           `${BaseUrl}/api/doctors?count=${count}`
         );
-        console.log("data", response);
         setDoctors(response.data);
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
       }
     };
 
@@ -31,7 +33,14 @@ const Doctors = ({ count = 6 }) => {
   }, [count]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-7 gap-5 lg:px-24 px-6 mb-10">
+        {/* Render 6 skeleton doctor cards in 2 rows of 3 items each */}
+        {[...Array(6)].map((_, index) => (
+          <DoctorCardSkeleton key={index} />
+        ))}
+      </div>
+    );
   }
 
   if (error) {
@@ -66,49 +75,3 @@ const Doctors = ({ count = 6 }) => {
 };
 
 export default Doctors;
-
-// const DoctorList = ({ count = 4 }) => {
-//     const [doctors, setDoctors] = useState([]);
-//     const [loading, setLoading] = useState(true);
-//     const [error, setError] = useState(null);
-
-//     useEffect(() => {
-//         const fetchDoctors = async () => {
-//             try {
-//                 const response = await axios.get(`/api/doctors?count=${count}`); // Adjust the API endpoint as needed
-//                 setDoctors(response.data);
-//             } catch (err) {
-//                 setError(err.message);
-//             } finally {
-//                 setLoading(false);
-//             }
-//         };
-
-//         fetchDoctors();
-//     }, [count]);
-
-//     if (loading) {
-//         return <div>Loading...</div>;
-//     }
-
-//     if (error) {
-//         return <div>Error: {error}</div>;
-//     }
-
-//     return (
-//         <div className="doctor-list">
-//             <h2>Doctor List</h2>
-//             <ul>
-//                 {doctors.map((doctor) => (
-//                     <li key={doctor.id}>
-//                         <h3>{doctor.name}</h3>
-//                         <p>Specialization: {doctor.specialization}</p>
-//                         <p>Contact: {doctor.contact}</p>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
-//     );
-// };
-
-// export default DoctorList;
