@@ -4,6 +4,7 @@ import Service from "../components/Service";
 import WhyUs from "../components/WhyUs";
 import Test from "../components/Test";
 import Doctors from "../components/Doctors";
+import Statistics from "../components/Statistics";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Service />
       <WhyUs />
       <Doctors />
+      <Statistics />
       {/* <Test /> */}
     </div>
   );
