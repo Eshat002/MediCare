@@ -34,12 +34,18 @@ const Doctors = ({ count = 6 }) => {
 
   if (loading) {
     return (
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-7 gap-5 lg:px-24 px-6 mb-10">
-        {/* Render 6 skeleton doctor cards in 2 rows of 3 items each */}
-        {[...Array(6)].map((_, index) => (
-          <DoctorCardSkeleton key={index} />
-        ))}
-      </div>
+      <>
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:px-24 px-6 mb-12 items-center">
+          <div className="h-5 bg-gray-300 rounded lg:w-1/4 sm:w-1/2 w-full mb-3"></div>
+          <div className="h-5 bg-gray-300 rounded lg:w-1/4 sm:w-1/2 w-full mb-3"></div>
+        </div>
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-7 gap-5 lg:px-24 px-6 mb-10">
+          {/* Render 6 skeleton doctor cards in 2 rows of 3 items each */}
+          {[...Array(6)].map((_, index) => (
+            <DoctorCardSkeleton key={index} />
+          ))}
+        </div>
+      </>
     );
   }
 
