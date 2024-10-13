@@ -17,7 +17,7 @@ const Doctors = ({ count = 6 }) => {
     const fetchDoctors = async () => {
       try {
         const response = await axios.get(
-          `${BaseUrl}/api/doctors?count=${count}`
+          `${BaseUrl}/api/doctors/?count=${count}`
         );
         setDoctors(response.data);
       } catch (err) {
@@ -53,7 +53,7 @@ const Doctors = ({ count = 6 }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <section className="mt-20 pt-10 pb-24 bg-bronze/5" id="Doctors">
+    <section className="mt-20 pt-10 pb-28 bg-bronze/5" id="Doctors">
       <div className="container mx-auto justify-center lg:px-24 px-6">
         <div className="section-headline-container mb-14 flex flex-col lg:flex-row lg:justify-between items-center gap-5">
           <SectionHeadline text="Our Qualified Doctors" />
