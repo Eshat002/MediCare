@@ -25,7 +25,7 @@ const Testimonial = () => {
   };
   return (
     <section id="testimonial" className="relative">
-      <div className="container mx-auto px-8 lg:px-24">
+      <div className="container mx-auto px-8 lg:px-24 py-6">
         <div className="flex justify-between items-center py-12">
           <div className="section-headline-container">
             <SectionHeadline text="Testimonials" />
@@ -50,7 +50,7 @@ const Testimonial = () => {
           }}
           // spaceBetween={40}
           slidesPerView={2}
-          pagination={{ clickable: true }}
+          // pagination={{ clickable: true }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
           breakpoints={swiperBreakpoints}
@@ -66,9 +66,39 @@ const Testimonial = () => {
                Really looking forward to working with them again."
             />
           </SwiperSlide>
-          <SwiperSlide>2</SwiperSlide>
-          <SwiperSlide>3</SwiperSlide>
-          <SwiperSlide>4</SwiperSlide>
+          <SwiperSlide>
+            <TestimonialCard
+              img={Jordan}
+              name="Jordan Browler"
+              rating={5}
+              review="These guys are incredible to work with. Like
+               seriously! They did everything so good, 
+               that I did not even imagine it would come up this awesome!
+               Really looking forward to working with them again."
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestimonialCard
+              img={Sofia}
+              name="Sofia Potter"
+              rating={5}
+              review="These guys are incredible to work with. Like
+               seriously! They did everything so good, 
+               that I did not even imagine it would come up this awesome!
+               Really looking forward to working with them again."
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestimonialCard
+              img={Jordan}
+              name="Jordan Browler"
+              rating={5}
+              review="These guys are incredible to work with. Like
+               seriously! They did everything so good, 
+               that I did not even imagine it would come up this awesome!
+               Really looking forward to working with them again."
+            />
+          </SwiperSlide>
         </Swiper>
       </div>
     </section>

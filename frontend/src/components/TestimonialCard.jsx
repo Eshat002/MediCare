@@ -6,14 +6,17 @@ const TestimonialCard = ({ name, rating, review, img }) => {
   //     console.log(newRating);
   //   };
   return (
-    <div className="bg-bronze/5 flex" id="testimonial-card">
+    <div
+      className="bg-bronze/10 flex flex-col lg:flex-row lg:items-start items-center justify-center rounded-3xl lg:space-x-6 lg:px-9 px-8 py-8"
+      id="testimonial-card"
+    >
       <img
-        className="w-20 h-20 object-cover rounded-full"
+        className="w-20 h-20 object-cover rounded-full mb-4"
         src={img}
         alt="avatar"
       />
-      <div>
-        <h5>{name}</h5>
+      <div className="flex lg:items-start items-center flex-col">
+        <h5 className="font-semibold text-2xl text-primaryBlack">{name}</h5>
         <ReactStars
           count={5}
           value={rating}
@@ -22,7 +25,9 @@ const TestimonialCard = ({ name, rating, review, img }) => {
           color2="#CF7D4E"
           edit={false}
         />
-        <p>{review}</p>
+        <p className="font-normal text-primaryBlack/80 text-lg mt-1">
+          {review}
+        </p>
       </div>
     </div>
   );
