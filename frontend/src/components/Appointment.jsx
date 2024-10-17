@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Flatpickr from "react-flatpickr";
 import { AiOutlineCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import "flatpickr/dist/flatpickr.min.css"; // Import Flatpickr CSS
+import CalenderGray from "../assets/svg/CalenderGray.jsx";
+import SectionHeadline from "./SectionHeadline.jsx";
+import BtnWithIcon from "./BtnWithIcon.jsx";
+import { FaTelegramPlane } from "react-icons/fa";
 
 const Appointment = () => {
   const [formData, setFormData] = useState({
@@ -42,21 +46,12 @@ const Appointment = () => {
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h2 className="text-3xl font-bold text-center mb-8">
-        Book an Appointment
-      </h2>
-
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+      <SectionHeadline text="Make Appointment" />
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl">
         <form onSubmit={handleSubmit}>
           {/* First Name and Last Name */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="firstName"
-              >
-                First Name
-              </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="firstName"
@@ -69,12 +64,6 @@ const Appointment = () => {
               />
             </div>
             <div>
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="lastName"
-              >
-                Last Name
-              </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="lastName"
@@ -91,36 +80,24 @@ const Appointment = () => {
           {/* Email and Phone */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="email"
-              >
-                Email
-              </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Email Address"
+                placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
             </div>
             <div>
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="phone"
-              >
-                Phone
-              </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                 id="phone"
                 name="phone"
                 type="tel"
-                placeholder="Phone Number"
+                placeholder="Phone"
                 value={formData.phone}
                 onChange={handleChange}
                 required
@@ -131,14 +108,8 @@ const Appointment = () => {
           {/* Appointment Date and Time using Flatpickr */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="relative">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="date"
-              >
-                Appointment Date
-              </label>
-              <div className="absolute left-3 top-10 text-gray-500 pointer-events-none">
-                <AiOutlineCalendar />
+              <div className="absolute left-3 top-2 text-gray-500 pointer-events-none">
+                <CalenderGray />
               </div>
               <Flatpickr
                 className="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -148,19 +119,13 @@ const Appointment = () => {
                 }}
                 value={formData.date}
                 onChange={handleDateChange}
-                placeholder="Select a date" // Placeholder text
+                placeholder="Appointment Date" // Placeholder text
                 required
               />
             </div>
             <div className="relative">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="time"
-              >
-                Appointment Time
-              </label>
-              <div className="absolute left-3 top-10 text-gray-500 pointer-events-none">
-                <AiOutlineClockCircle />
+              <div className="absolute left-3 top-2 text-gray-500 pointer-events-none">
+                <AiOutlineClockCircle size={22} color="#7D8B8D" />
               </div>
               <Flatpickr
                 className="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -173,7 +138,7 @@ const Appointment = () => {
                 }}
                 value={formData.time}
                 onChange={handleTimeChange}
-                placeholder="Select a time" // Placeholder text
+                placeholder="Appointment Time" // Placeholder text
                 required
               />
             </div>
@@ -181,30 +146,20 @@ const Appointment = () => {
 
           {/* Message */}
           <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="message"
-            >
-              Message (Optional)
-            </label>
             <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
               id="message"
               name="message"
-              placeholder="Any additional info"
+              placeholder="Describe what you’re looking for..."
               value={formData.message}
               onChange={handleChange}
+              rows="3"
             />
           </div>
 
           {/* Submit Button */}
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              Book Appointment
-            </button>
+          <div className="flex items-center justify-center">
+            <BtnWithIcon text="Send" icon={<FaTelegramPlane size={20} />} />
           </div>
         </form>
       </div>
