@@ -45,15 +45,17 @@ const Appointment = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <SectionHeadline text="Make Appointment" />
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl">
+    <section className="bg-white flex flex-col items-center justify-center py-20">
+      <div className="section-headline-container mb-5">
+        <SectionHeadline text="Make Appointment" />
+      </div>
+      <div className="p-6 w-full max-w-3xl">
         <form onSubmit={handleSubmit}>
           {/* First Name and Last Name */}
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-2 gap-7 mb-7">
             <div>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-[#fcfcfc] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
                 id="firstName"
                 name="firstName"
                 type="text"
@@ -65,7 +67,7 @@ const Appointment = () => {
             </div>
             <div>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
                 id="lastName"
                 name="lastName"
                 type="text"
@@ -78,10 +80,10 @@ const Appointment = () => {
           </div>
 
           {/* Email and Phone */}
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-2 gap-7 mb-7">
             <div>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
                 id="email"
                 name="email"
                 type="email"
@@ -93,7 +95,7 @@ const Appointment = () => {
             </div>
             <div>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
                 id="phone"
                 name="phone"
                 type="tel"
@@ -106,13 +108,13 @@ const Appointment = () => {
           </div>
 
           {/* Appointment Date and Time using Flatpickr */}
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-2 gap-7 mb-7">
             <div className="relative">
-              <div className="absolute left-3 top-2 text-gray-500 pointer-events-none">
+              <div className="absolute left-3 top-3 text-gray-500 pointer-events-none">
                 <CalenderGray />
               </div>
               <Flatpickr
-                className="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-12 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
                 id="date"
                 options={{
                   dateFormat: "Y-m-d", // Set the date format
@@ -124,11 +126,11 @@ const Appointment = () => {
               />
             </div>
             <div className="relative">
-              <div className="absolute left-3 top-2 text-gray-500 pointer-events-none">
+              <div className="absolute left-3 top-3 text-gray-500 pointer-events-none">
                 <AiOutlineClockCircle size={22} color="#7D8B8D" />
               </div>
               <Flatpickr
-                className="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-12 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
                 id="time"
                 options={{
                   enableTime: true,
@@ -145,15 +147,15 @@ const Appointment = () => {
           </div>
 
           {/* Message */}
-          <div className="mb-4">
+          <div className="mb-8">
             <textarea
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
               id="message"
               name="message"
               placeholder="Describe what you’re looking for..."
               value={formData.message}
               onChange={handleChange}
-              rows="3"
+              rows="5"
             />
           </div>
 
