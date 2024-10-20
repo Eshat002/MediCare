@@ -7,7 +7,9 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/doctors/",include("doctor.api.urls"))
+    path("api/doctors/",include("doctor.api.urls")),
+    path('api/appointments/', include('appointment.api.urls')),   
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

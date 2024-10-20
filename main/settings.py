@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "doctor",
     "global",
+    "appointment",
     # thrid_party
     "rest_framework",
     "corsheaders",

@@ -5,14 +5,17 @@ import CalenderGray from "../assets/svg/CalenderGray.jsx";
 import SectionHeadline from "./SectionHeadline.jsx";
 import BtnWithIcon from "./BtnWithIcon.jsx";
 import { FaTelegramPlane } from "react-icons/fa";
+import axios from "axios";
+
+const BaseUrl = import.meta.env.VITE_API_URL;
 
 const Appointment = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
     phone: "",
-    appointmentDateTime: null, // Combined date and time
+    appointment_date_time: null, // Combined date and time
     message: "",
   });
 
@@ -21,21 +24,36 @@ const Appointment = () => {
   };
 
   const handleDateTimeChange = (selectedDates) => {
-    setFormData({ ...formData, appointmentDateTime: selectedDates[0] }); // Set combined date and time
+    setFormData({ ...formData, appointment_date_time: selectedDates[0] }); // Set combined date and time
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      appointmentDateTime: null, // Combined date and time
-      message: "",
-    });
     console.log(formData);
-    // Add form submission logic here (e.g., API call)
+
+    try {
+      const response = await axios.post(
+        `${BaseUrl}/api/appointments/create/`,
+        formData
+      );
+
+      console.log("Appointment Created:", response.data);
+
+      // Reset form data
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        appointment_date_time: null,
+        message: "",
+      });
+    } catch (error) {
+      console.error(
+        "There was an error creating the appointment!",
+        error.response.data
+      );
+    }
   };
 
   return (
@@ -50,11 +68,11 @@ const Appointment = () => {
             <div>
               <input
                 className="bg-[#fcfcfc] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
-                id="firstName"
-                name="firstName"
+                id="first_name"
+                name="first_name" // Changed to match formData
                 type="text"
                 placeholder="First Name"
-                value={formData.firstName}
+                value={formData.first_name} // Changed to match formData
                 onChange={handleChange}
                 required
               />
@@ -62,11 +80,11 @@ const Appointment = () => {
             <div>
               <input
                 className="bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
-                id="lastName"
-                name="lastName"
+                id="last_name"
+                name="last_name" // Changed to match formData
                 type="text"
                 placeholder="Last Name"
-                value={formData.lastName}
+                value={formData.last_name} // Changed to match formData
                 onChange={handleChange}
                 required
               />
@@ -108,13 +126,13 @@ const Appointment = () => {
             </div>
             <Flatpickr
               className="bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-12 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
-              id="dateTime"
+              id="appointment_date_time" // Changed to match formData
               options={{
                 enableTime: true,
                 dateFormat: "Y-m-d H:i", // Set the date and time format
                 time_24hr: false, // Use 12-hour time
               }}
-              value={formData.appointmentDateTime} // Use the combined date and time
+              value={formData.appointment_date_time} // Changed to match formData
               onChange={handleDateTimeChange}
               placeholder="Appointment Date and Time" // Placeholder text
               required
