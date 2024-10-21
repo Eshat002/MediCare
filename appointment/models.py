@@ -7,7 +7,7 @@ class Appointment(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     appointment_date_time = models.DateTimeField()
-    message = models.TextField(blank=True, null=True)
+    message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
