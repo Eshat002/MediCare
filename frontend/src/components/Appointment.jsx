@@ -22,7 +22,7 @@ const Appointment = () => {
 
   const [errors, setErrors] = useState({}); // State to capture errors from the backend
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // State for success modal
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,9 +53,9 @@ const Appointment = () => {
         appointment_date_time: null,
         message: "",
       });
-      setTimeout(() => {
-        setIsModalVisible(true); // Trigger the animation
-      }, 50);
+      // setTimeout(() => {
+      //   setIsModalVisible(true); // Trigger the animation
+      // }, 50);
 
       setIsSuccessModalOpen(true);
     } catch (error) {
@@ -91,7 +91,9 @@ const Appointment = () => {
               />
 
               {errors.first_name && (
-                <p className="text-red-500 text-sm mt-1">{errors.first_name}</p>
+                <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+                  {errors.first_name}
+                </p>
               )}
             </div>
             <div>
@@ -107,7 +109,9 @@ const Appointment = () => {
                 onChange={handleChange}
               />
               {errors.last_name && (
-                <p className="text-red-500 text-sm mt-1">{errors.last_name}</p>
+                <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+                  {errors.last_name}
+                </p>
               )}
             </div>
           </div>
@@ -127,7 +131,9 @@ const Appointment = () => {
                 onChange={handleChange}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+                  {errors.email}
+                </p>
               )}
             </div>
             <div>
@@ -173,7 +179,7 @@ const Appointment = () => {
               placeholder="Appointment Date and Time"
             />
             {errors.appointment_date_time && (
-              <p className="text-red-500 text-sm mt-1">
+              <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
                 {errors.appointment_date_time}
               </p>
             )}
@@ -193,7 +199,9 @@ const Appointment = () => {
               rows="5"
             />
             {errors.message && (
-              <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+              <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+                {errors.message}
+              </p>
             )}
           </div>
 
@@ -203,7 +211,7 @@ const Appointment = () => {
           </div>
         </form>
       </div>
-      {/* {isSuccessModalOpen && (
+      {isSuccessModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50 transition-opacity duration-300 ">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4">Appointment Created!</h2>
@@ -216,8 +224,8 @@ const Appointment = () => {
             />
           </div>
         </div>
-      )} */}
-      {isSuccessModalOpen && (
+      )}
+      {/* {isSuccessModalOpen && (
         <div
           className={`fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50 transition-opacity duration-300 ${
             isModalVisible ? "opacity-100" : "opacity-0"
@@ -247,7 +255,7 @@ const Appointment = () => {
             />
           </div>
         </div>
-      )}
+      )} */}
     </section>
   );
 };
