@@ -5,11 +5,11 @@ class AppointmentSerializer(serializers.ModelSerializer):
     first_name =  serializers.CharField(max_length=50, error_messages={'blank': 'Come on, a little effort! Fill this field in.',})
     last_name =  serializers.CharField(max_length=50, error_messages={'blank': 'Come on, a little effort! Fill this field in.',})
     email =  serializers.EmailField(error_messages={'blank': 'Come on, a little effort! Fill this field in.',})
-    phone =  serializers.CharField(max_length=20,)
+    phone =  serializers.CharField(max_length=20,error_messages={'blank': 'Come on, a little effort! Fill this field in.',})
     appointment_date_time = serializers.DateTimeField(
         error_messages={
-            'blank': 'Come on, a little effort! Fill this field in.',
-            'required': 'Come on, a little effort! Fill this field in.'  # Custom message for required field
+            'null': 'Come on, a little effort! Fill this field in.',
+         
         }
     )
     message = serializers.CharField(
@@ -22,7 +22,4 @@ class AppointmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-    def validate_appointment_date_time (self, value):
-        if value is None:
-            raise serializers.ValidationError("Come on, a little effort! Fill this field in.")
-        return value
+    
