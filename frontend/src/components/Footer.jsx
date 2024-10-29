@@ -3,6 +3,7 @@ import logo from "../assets/logo.png";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -40,9 +41,49 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>2</div>
-          <div>2</div>
-          <div>2</div>
+          <div>
+            <h2 className="font-semibold text-2xl text-primaryBlack footer-title mb-6 mt-1">
+              Explore
+            </h2>
+            <p className="font-medium text-lg text-primaryBlack/70 mb-3">
+              <Link to="/">Feature</Link>
+            </p>
+            <p className="font-medium text-lg text-primaryBlack/70 mb-3">
+              <Link to="/">About us</Link>
+            </p>
+            <p className="font-medium text-lg text-primaryBlack/70 mb-3">
+              <Link to="/">FAQs</Link>
+            </p>
+            <p className="font-medium text-lg text-primaryBlack/70">
+              <Link to="/">Contact</Link>
+            </p>
+          </div>
+          <div>
+            <h2 className="font-semibold text-2xl text-primaryBlack footer-title mb-6 mt-1">
+              Legal
+            </h2>
+            <p className="font-medium text-lg text-primaryBlack/70 mb-3">
+              <Link to="/">Privacy Policy</Link>
+            </p>
+            <p className="font-medium text-lg text-primaryBlack/70 mb-3">
+              <Link to="/">Terms of Services</Link>
+            </p>
+            <p className="font-medium text-lg text-primaryBlack/70 mb-3">
+              <Link to="/">Documentations</Link>
+            </p>
+            <p className="font-medium text-lg text-primaryBlack/70">
+              <Link to="/">Help Center</Link>
+            </p>
+          </div>
+          <div>
+            <h2 className="font-semibold text-2xl text-primaryBlack footer-title mb-6 mt-1">
+              Subscribe
+            </h2>
+            <p className="font-medium text-lg text-primaryBlack/70 mb-3">
+              Subscribe to get the latest news from us
+            </p>
+            <div className="form-container">form</div>
+          </div>
         </div>
         <div id="footer-sec-section"></div>
       </div>
