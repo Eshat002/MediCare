@@ -4,12 +4,13 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import SubscribeForm from "./SubscribeForm";
 
 const Footer = () => {
   return (
     <footer>
       <div className="container mx-auto px-24 py-6">
-        <div className="grid grid-cols-4" id="footer-first-section">
+        <div className="flex justify-between" id="footer-first-section">
           {/* Logo */}
           <div>
             <img className="mb-5" width={150} src={logo} alt="logo" />
@@ -82,7 +83,9 @@ const Footer = () => {
             <p className="font-medium text-lg text-primaryBlack/70 mb-3">
               Subscribe to get the latest news from us
             </p>
-            <div className="form-container">form</div>
+            <div className="form-container mt-5">
+              <SubscribeForm />
+            </div>
           </div>
         </div>
         <div id="footer-sec-section"></div>
