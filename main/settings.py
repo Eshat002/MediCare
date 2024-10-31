@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "doctor",
     "global",
     "appointment",
+    "newsletter",
     # thrid_party
     "rest_framework",
     "corsheaders",

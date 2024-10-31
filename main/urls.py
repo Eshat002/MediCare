@@ -9,6 +9,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/doctors/",include("doctor.api.urls")),
     path('api/appointments/', include('appointment.api.urls')),   
+    path('api/newsletter/', include('newsletter.api.urls')),
+
 
 ]
 
