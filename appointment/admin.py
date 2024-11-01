@@ -6,7 +6,3 @@ from unfold.admin import ModelAdmin as UnfoldModelAdmin
 @admin.register(Appointment)
 class AppointmentAdmin(UnfoldModelAdmin):
     pass
-
-
-
-

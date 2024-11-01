@@ -41,8 +41,8 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
     ],
 }
 
@@ -59,9 +59,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",   
- 
-
+    "http://localhost:5173",
 ]
 
 
@@ -125,8 +123,8 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
-TIME_ZONE = 'Asia/Dhaka'   
-USE_TZ = True   
+TIME_ZONE = "Asia/Dhaka"
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

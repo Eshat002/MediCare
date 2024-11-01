@@ -8,6 +8,6 @@ class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Doctor
         fields = "__all__"
-    
+
     def get_full_name(self, obj):
         return f"{obj.first_name} {obj.last_name}"
