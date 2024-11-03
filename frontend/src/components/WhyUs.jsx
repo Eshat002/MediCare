@@ -15,7 +15,7 @@ const WhyUs = () => {
         <div className="section-headline-container mb-14 lg:text-start text-center">
           <SectionHeadline text="why us?" />
         </div>
-        <div className="why-us-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-5 gap-0">
+        <div className="why-us-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-5">
           <WhyUsCard
             img={DNA}
             title="DNA Diagnostics"
