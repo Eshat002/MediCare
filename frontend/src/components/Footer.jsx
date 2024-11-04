@@ -5,12 +5,17 @@ import { FaTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import SubscribeForm from "./SubscribeForm";
+import BtnWithoutIcon from "./BtnWithoutIcon";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer>
       <div className="container mx-auto px-24 py-6">
-        <div className="flex justify-between" id="footer-first-section">
+        <div
+          className="flex justify-between border-b pt-6 py-8"
+          id="footer-first-section"
+        >
           {/* Logo */}
           <div>
             <img className="mb-5" width={150} src={logo} alt="logo" />
@@ -88,7 +93,33 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div id="footer-sec-section"></div>
+        <div className="flex justify-between py-6" id="footer-sec-section">
+          <div>
+            <p className="font-medium text-base text-primaryBlack/30">
+              © {currentYear} iMedical, All Rights Reserved
+            </p>
+          </div>
+          <div className="space-x-7">
+            <a
+              className="font-medium text-base text-primaryBlack/40"
+              href="/Privacy-Policy"
+            >
+              Privacy Policy
+            </a>
+            <a
+              className="font-medium text-base text-primaryBlack/40"
+              href="/tos"
+            >
+              Terms of Services
+            </a>
+            <a
+              className="font-medium text-base text-primaryBlack/40"
+              href="/Accesibility"
+            >
+              Accesibility
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );
