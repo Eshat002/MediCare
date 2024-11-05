@@ -11,9 +11,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer>
-      <div className="container mx-auto px-24 py-6">
+      <div className="container mx-auto xl:px-24 sm:px-12 px-7 md:py-6 py-3">
         <div
-          className="flex justify-between border-b pt-6 py-8"
+          className="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 border-b pt-6 py-8 gap-12"
           id="footer-first-section"
         >
           {/* Logo */}
@@ -47,7 +47,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
+          <div className="xl:pl-10">
             <h2 className="font-semibold text-2xl text-primaryBlack footer-title mb-6 mt-1">
               Explore
             </h2>
@@ -93,13 +93,16 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-between py-6" id="footer-sec-section">
-          <div>
+        <div
+          className="flex lg:flex-row lg:justify-between flex-col lg:gap-0 gap-5 py-4"
+          id="footer-sec-section"
+        >
+          <div className="lg:mt-0 mt-4">
             <p className="font-medium text-base text-primaryBlack/30">
               © {currentYear} iMedical, All Rights Reserved
             </p>
           </div>
-          <div className="space-x-7">
+          <div className="flex lg:flex-row flex-col lg:gap-7 gap-5">
             <a
               className="font-medium text-base text-primaryBlack/40"
               href="/Privacy-Policy"
