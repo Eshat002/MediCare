@@ -13,7 +13,7 @@ const Statistics = () => {
         </div>
         <div className="lg:w-1/3 w-full lg:border-r  border-white/20 lg:py-5 py-6">
           <h3 className="font-extrabold text-5xl text-white mb-2">
-            <CountingAnimation target={2300} sign="+" />
+            <CountingAnimation target={7300} sign="+" />
           </h3>
           <p className="font-medium text-xl text-primary">
             Happy Patients a week
