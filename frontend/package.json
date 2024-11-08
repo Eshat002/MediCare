@@ -23,7 +23,8 @@
     "react-router-dom": "^6.27.0",
     "react-stars": "^2.2.5",
     "react-time-picker": "^7.0.0",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.14",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
