@@ -5,6 +5,7 @@ from unfold.admin import ModelAdmin as UnfoldModelAdmin
 
 @admin.register(Doctor)
 class DoctorAdmin(UnfoldModelAdmin):
+    pass
     list_display = (
         "first_name",
         "last_name",

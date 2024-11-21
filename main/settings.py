@@ -32,16 +32,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "doctor",
-    "global",
     "appointment",
     "newsletter",
-    "accounts",
+    "account",
     # thrid_party
     "rest_framework",
     "corsheaders",
     "djoser",
     "rest_framework_simplejwt",
 ]
+
+AUTH_USER_MODEL = "account.UserAccount"
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
@@ -62,10 +63,8 @@ DJOSER = {
     "SEND_ACTIVATION_EMAIL": False,
     'LOGIN_FIELD': 'email', 
     "SERIALIZERS": {
-        "user_create": "accounts.serializers.UserCreateSerializer",
-        "user": "accounts.serializers.UserCreateSerializer",
-        "current_user": "accounts.serializers.UserCreateSerializer",
-        "user_delete": "djoser.serializers.UserDeleteSerializer",
+        "user_create": "account.serializers.UserCreateSerializer",  # Optional customization
+        
     },
 }
 
@@ -200,3 +199,6 @@ UNFOLD = {
         },
     },
 }
+
+
+ 

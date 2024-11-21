@@ -1,0 +1,19 @@
+/* Custom CSS for Light Mode */
+label {
+  display: block;
+  font-weight: 500;
+  color: rgb(147 51 234) !important;
+  font-size: 0.875rem;
+  padding-bottom: 5px !important;
+}
+
+label[for="id_password1"],
+label[for="id_password2"] {
+  margin-bottom: 5px;
+}
+
+label[for="id_password1"]::after,
+label[for="id_password2"]::after {
+  content: " *";
+  color: red;
+}
