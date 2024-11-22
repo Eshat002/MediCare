@@ -61,10 +61,9 @@ SIMPLE_JWT = {
 DJOSER = {
     "USER_CREATE_PASSWORD_RETYPE": True,
     "SEND_ACTIVATION_EMAIL": False,
-    'LOGIN_FIELD': 'email', 
+    "LOGIN_FIELD": "email",
     "SERIALIZERS": {
         "user_create": "account.serializers.UserCreateSerializer",  # Optional customization
-        
     },
 }
 
@@ -199,6 +198,3 @@ UNFOLD = {
         },
     },
 }
-
-
- 
