@@ -15,7 +15,12 @@ const Navbar = () => {
       <div className="container mx-auto px-8 lg:px-14 flex items-center justify-between">
         {/* Logo Section */}
         <div className="relative z-50">
-          <img width={150} src={logo} alt="logo" />
+          <a href="/">
+        
+
+                    <img width={150} src={logo} alt="logo" />
+
+          </a>
         </div>
 
         {/* Navbar Links for Desktop */}

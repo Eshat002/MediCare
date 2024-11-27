@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./screens/Home";
 import Layout from "./hocs/Layout";
 import useAuthStore from "./stores/authStore";
-import Login from "./components/Login";
+import Login from "./screens/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./components/Dashboard";
 import { useEffect } from "react";
+import TestLogin from "./screens/TestLogin";
 
 const App = () => {
   const { loadUser } = useAuthStore();
@@ -21,6 +22,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/test-login" element={<TestLogin />} />
           <Route
             path="/dashboard"
             element={

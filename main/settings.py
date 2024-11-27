@@ -3,6 +3,7 @@ from decouple import config
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.templatetags.static import static
+from datetime import timedelta
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -62,8 +63,8 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
-    # "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
-    # "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     # 'AUTH_TOKEN_CLASSES': (
     #     'rest_framework_simplejwt.tokens.AccessToken',
     # )

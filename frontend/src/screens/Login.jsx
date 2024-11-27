@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useAuthStore from "../stores/authStore";
 
 const Login = () => {
-  const { login, isAuthenticated } = useAuthStore();
+  const { login } = useAuthStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +24,7 @@ const Login = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
+          required className="border"
         />
       </div>
       <div>
@@ -33,10 +33,10 @@ const Login = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          required className="border"
         />
       </div>
-      <button type="submit">Login</button>
+      <button className="border" type="submit">Login</button>
     </form>
   );
 };

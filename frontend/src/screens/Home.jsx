@@ -6,7 +6,6 @@ import Doctors from "../components/Doctors";
 import Statistics from "../components/Statistics";
 import Testimonial from "../components/Testimonial";
 import Appointment from "../components/Appointment";
-import Test from "../components/Test";
 
 const Home = () => {
   return (
