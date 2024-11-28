@@ -9,10 +9,14 @@ const Login = () => {
       <div className="container mx-auto flex justify-center">
         {/* image-container */}
         <div className="w-1/2">
-          <img className="h-screen w-full object-cover" src={Doctor} alt="" />
+          <img
+            className="h-screen w-full object-cover"
+            src={Doctor}
+            alt="doctor-image"
+          />
         </div>
         {/* form container */}
-        <div className="flex justify-start w-1/2">
+        <div className="flex pl-6 w-1/2">
           <LoginForm />
         </div>
       </div>
