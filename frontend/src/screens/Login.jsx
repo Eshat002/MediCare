@@ -1,43 +1,22 @@
 import React, { useState } from "react";
 import useAuthStore from "../stores/authStore";
+import Doctor from "../assets/Img/Doctor.jpg";
+import LoginForm from "../components/LoginForm";
 
 const Login = () => {
-  const { login } = useAuthStore();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const success = await login(email, password);
-    if (success) {
-      // Redirect or show success message
-    } else {
-      alert("Login failed. Check your credentials.");
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required className="border"
-        />
+    <section className="login">
+      <div className="container mx-auto flex justify-center">
+        {/* image-container */}
+        <div className="w-1/2">
+          <img className="h-screen w-full object-cover" src={Doctor} alt="" />
+        </div>
+        {/* form container */}
+        <div className="flex justify-start w-1/2">
+          <LoginForm />
+        </div>
       </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required className="border"
-        />
-      </div>
-      <button className="border" type="submit">Login</button>
-    </form>
+    </section>
   );
 };
 

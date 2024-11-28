@@ -31,7 +31,6 @@ const useAuthStore = create((set) => ({
       await useAuthStore.getState().loadUser();
       return true;
       
-  
       
     } catch (error) {
       if (error.response) {

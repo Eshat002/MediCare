@@ -5,10 +5,6 @@ const TestLogin = () => {
 
   const { user, isAuthenticated } = useAuthStore();
  
-
-
-
-
   return (
     <div className="TestLogin">
       {isAuthenticated ? (
