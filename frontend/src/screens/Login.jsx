@@ -6,7 +6,7 @@ import LoginForm from "../components/LoginForm";
 const Login = () => {
   return (
     <section className="login">
-      <div className="container mx-auto flex justify-center">
+      <div className="flex">
         {/* image-container */}
         <div className="w-1/2">
           <img
@@ -16,7 +16,7 @@ const Login = () => {
           />
         </div>
         {/* form container */}
-        <div className="flex pl-6 w-1/2">
+        <div className="w-1/2 flex justify-center">
           <LoginForm />
         </div>
       </div>
