@@ -1,11 +1,10 @@
-import React, { useState } from "react";
 import useAuthStore from "../stores/authStore";
 import HeadlineSection from "../components/SectionHeadline";
 import Google from "../assets/svg/Google";
 import { CiLock } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { Link } from "react-router-dom";
-
+import { useState } from "react";
 import { LoginButton } from "./LoginButton";
 import { useNavigate } from "react-router-dom";
 
@@ -14,20 +13,20 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [formError, setFormError] = useState(""); //
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = await login(email, password);
-    if (success) {
+    const result = await login(email, password);
+    if (result.success) {
       navigate("/test-login");
-      // Redirect or show success message
     } else {
-      alert("Login failed. Check your credentials.");
+      setFormError("Invalid email or password.");
     }
   };
 
   return (
-    <div className="flex flex-col mt-20">
+    <div className="flex flex-col mt-20 px-36">
       <div className="headline-container mb-8">
         <HeadlineSection
           className="font-bold lg:text-4xl text-2xl capitalize text-primaryBlack"
@@ -66,7 +65,6 @@ const LoginForm = () => {
           <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
             <CiMail size={22} color="gray" />
           </div>
-
           {/* Input Field */}
           <input
             type="email"
@@ -74,9 +72,8 @@ const LoginForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full pl-12 outline-none font-normal text-base text-primaryBlack py-3 bg-white border-2 border-gray-400 rounded-lg placeholder-gray-300"
             placeholder="Enter Your Email"
-          />
-        </div>
-
+          />{" "}
+        </div>{" "}
         <div className="relative">
           {/* Password Icon */}
           <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
@@ -93,6 +90,11 @@ const LoginForm = () => {
             placeholder="Password"
           />
         </div>
+        {formError && (
+          <div className="p-5 bg-primary/20 text-red-500 text-sm text-center font-medium rounded-lg mt-6">
+            {formError}
+          </div>
+        )}
         {/* Forgot password */}
         <div className="flex justify-between py-4">
           <div className="flex items-center">
@@ -105,13 +107,12 @@ const LoginForm = () => {
           <div>
             <Link
               to="/forgot-password"
-              className="text-base text-primaryBlack font-normal"
+              className="text-base text-primaryBlack font-normal underline"
             >
               Forget Password?
             </Link>
           </div>
         </div>
-
         <LoginButton />
       </form>
       <p className="text-center text-base text-primaryBlack font-normal py-4">

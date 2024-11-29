@@ -5,12 +5,12 @@ import LoginForm from "../components/LoginForm";
 
 const Login = () => {
   return (
-    <section className="login">
+    <section className="login mt-4">
       <div className="flex">
         {/* image-container */}
         <div className="w-1/2">
           <img
-            className="h-screen w-full object-cover"
+            className="h-screen w-full object-cover rounded-r-[60px]"
             src={Doctor}
             alt="doctor-image"
           />
