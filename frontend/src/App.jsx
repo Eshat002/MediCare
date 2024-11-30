@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Home from "./screens/Home";
 import Layout from "./hocs/Layout";
 import useAuthStore from "./stores/authStore";
@@ -10,18 +15,23 @@ import { useEffect } from "react";
 import TestLogin from "./screens/TestLogin";
 
 const App = () => {
-  const { loadUser } = useAuthStore();
+  const { loadUser, isAuthenticated } = useAuthStore();
 
   useEffect(() => {
-    loadUser();
-  }, [loadUser]);
+    if (isAuthenticated) {
+      loadUser();
+    }
+  }, [isAuthenticated]);
 
   return (
     <Router>
       <Layout>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={isAuthenticated ? <Navigate to="/" /> : <Login />}
+          />
           <Route path="/test-login" element={<TestLogin />} />
           <Route
             path="/dashboard"

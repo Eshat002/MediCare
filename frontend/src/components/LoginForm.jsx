@@ -17,9 +17,11 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFormError(""); // Clear previous errors
+
     const result = await login(email, password);
     if (result.success) {
-      navigate("/test-login");
+      navigate("/");
     } else {
       setFormError("Invalid email or password.");
     }
@@ -38,7 +40,7 @@ const LoginForm = () => {
           SmileCare.
         </p>
       </div>
-      <form action="">
+      <form>
         <Link
           to="/google-login"
           className="flex items-center justify-center font-medium text-base text-primaryBlack gap-2 py-3 px-3 bg-white border border-primaryBlack rounded-lg"

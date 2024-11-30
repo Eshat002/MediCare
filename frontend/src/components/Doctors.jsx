@@ -15,10 +15,18 @@ const Doctors = ({ count = 6 }) => {
 
   useEffect(() => {
     const fetchDoctors = async () => {
+      const token = localStorage.getItem("accessToken"); // Retrieve the token
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Add the token here
+        },
+      };
       try {
         const response = await axios.get(
-          `${BaseUrl}/api/doctors/?count=${count}`
+          `${BaseUrl}/api/doctors/?count=${count}`,
+          config
         );
+
         setDoctors(response.data);
       } catch (err) {
         setError(err.message);

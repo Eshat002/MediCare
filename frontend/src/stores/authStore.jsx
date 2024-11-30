@@ -26,7 +26,9 @@ const useAuthStore = create((set) => ({
 
       const accessToken = response.data.access;
       console.log("access", accessToken);
+
       localStorage.setItem("accessToken", accessToken);
+
       set({ accessToken, isAuthenticated: true });
       await useAuthStore.getState().loadUser();
       return { success: true };
@@ -39,7 +41,7 @@ const useAuthStore = create((set) => ({
         console.error("Error setting up request:", error.message);
       }
 
-      return { success: false, error: error.response.data };
+      return { success: false };
     }
   },
 
