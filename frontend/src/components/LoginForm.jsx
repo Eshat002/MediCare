@@ -28,7 +28,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex flex-col mt-20 px-36">
+    <div className="flex flex-col">
       <div className="headline-container mb-8">
         <HeadlineSection
           className="font-bold lg:text-4xl text-2xl capitalize text-primaryBlack"

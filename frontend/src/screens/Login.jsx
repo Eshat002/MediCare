@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import useAuthStore from "../stores/authStore";
+import React from "react";
 import Doctor from "../assets/Img/Doctor.jpg";
 import LoginForm from "../components/LoginForm";
 
@@ -8,15 +7,15 @@ const Login = () => {
     <section className="login mt-4">
       <div className="flex">
         {/* image-container */}
-        <div className="w-1/2">
+        <div className="md:w-1/2 md:flex hidden">
           <img
-            className="h-screen w-full object-cover rounded-r-[60px]"
+            className="min-h-screen w-full object-cover rounded-r-[60px]"
             src={Doctor}
             alt="doctor-image"
           />
         </div>
         {/* form container */}
-        <div className="w-1/2 flex justify-center">
+        <div className="md:w-1/2 w-full flex justify-center md:mt-20 mt-14 xl:px-36 px-6">
           <LoginForm />
         </div>
       </div>
