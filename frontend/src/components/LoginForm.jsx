@@ -4,9 +4,9 @@ import Google from "../assets/svg/Google";
 import { CiLock } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { LoginButton } from "./LoginButton";
 import { useNavigate } from "react-router-dom";
+import { AuthBtn } from "./AuthBtn";
+import { useState } from "react";
 
 const LoginForm = () => {
   const { login } = useAuthStore();
@@ -115,7 +115,7 @@ const LoginForm = () => {
             </Link>
           </div>
         </div>
-        <LoginButton />
+        <AuthBtn text="Log in" />
       </form>
       <p className="text-center text-base text-primaryBlack font-normal py-4">
         Not member yet?

@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
   const location = useLocation(); // Get the current route
 
   // Define routes where the footer should be hidden
-  const hideFooterRoutes = ["/login", "/signup"];
+  const hideFooterRoutes = ["/login", "/signup", "/reset-password"];
 
   return (
     <div>

@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./components/Dashboard";
 import { useEffect } from "react";
 import TestLogin from "./screens/TestLogin";
+import ResetPassword from "./screens/ResetPassword";
 
 const App = () => {
   const { loadUser, isAuthenticated } = useAuthStore();
@@ -32,6 +33,8 @@ const App = () => {
             path="/login"
             element={isAuthenticated ? <Navigate to="/" /> : <Login />}
           />
+          <Route path="/login" element={<Login />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/test-login" element={<TestLogin />} />
           <Route
             path="/dashboard"
