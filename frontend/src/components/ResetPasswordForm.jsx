@@ -1,19 +1,12 @@
 import useAuthStore from "../stores/authStore";
 import HeadlineSection from "../components/SectionHeadline";
-import Google from "../assets/svg/Google";
-import { CiLock } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-
-import { useNavigate } from "react-router-dom";
 import { AuthBtn } from "./AuthBtn";
 
 const ResetPasswordForm = () => {
   const { requestPasswordReset } = useAuthStore();
   const [email, setEmail] = useState("");
-
-  //   const navigate = useNavigate();
   const [formError, setFormError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
