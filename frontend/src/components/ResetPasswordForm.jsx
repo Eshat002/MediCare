@@ -10,22 +10,25 @@ import { useNavigate } from "react-router-dom";
 import { AuthBtn } from "./AuthBtn";
 
 const ResetPasswordForm = () => {
-  //   const { login } = useAuthStore();
+  const { requestPasswordReset } = useAuthStore();
   const [email, setEmail] = useState("");
 
   //   const navigate = useNavigate();
   const [formError, setFormError] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError(""); // Clear previous errors
 
-    // const result = await login(email, password);
-    // if (result.success) {
-    //   navigate("/");
-    // } else {
-    //   setFormError("Invalid email or password.");
-    // }
+    const result = await requestPasswordReset(email);
+    if (result.success) {
+      setSuccessMsg("An email has been sent. Please check your inbox.");
+      setFormError("");
+    } else {
+      setFormError(result.error);
+      setSuccessMsg("");
+    }
   };
 
   return (
@@ -57,8 +60,15 @@ const ResetPasswordForm = () => {
           />{" "}
         </div>{" "}
         {formError && (
-          <div className="p-5 bg-primary/20 text-red-500 text-sm text-center font-medium rounded-lg mt-6">
-            {formError}
+          <div className="p-5 mb-6 bg-primary/20 text-red-500 text-sm text-center font-medium rounded-lg mt-6">
+            {formError.email.includes("This field may not be blank.")
+              ? "You must provide your email"
+              : formError.email || "An error occurred"}
+          </div>
+        )}
+        {successMsg && (
+          <div className="p-6 mb-6 bg-primary/20 text-black text-sm text-center font-medium rounded-lg mt-6">
+            {successMsg}
           </div>
         )}
         <AuthBtn text="Submit" />

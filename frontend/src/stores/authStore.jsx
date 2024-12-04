@@ -68,6 +68,56 @@ const useAuthStore = create((set) => ({
       }
     }
   },
+  // Request password reset
+  requestPasswordReset: async (email) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      await axios.post(
+        `${BaseUrl}/auth/users/reset_password/`,
+        { email },
+        config
+      );
+      console.log("Password reset email sent");
+      return { success: true };
+    } catch (error) {
+      const errorData = error.response ? error.response.data : error.message;
+      console.error("Password reset error:", errorData);
+      return { success: false, error: errorData };
+    }
+  },
+
+  // Confirm password reset
+  confirmPasswordReset: async (uid, token, new_password, re_new_password) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      await axios.post(
+        `${BaseUrl}/auth/users/reset_password_confirm/`,
+        {
+          uid,
+          token,
+          new_password,
+          re_new_password,
+        },
+        config
+      );
+      console.log("Password successfully reset");
+      return { success: true };
+    } catch (error) {
+      const errorData = error.response ? error.response.data : error.message;
+      console.error("Password reset confirmation error:", errorData);
+      return { success: false, error: errorData };
+    }
+  },
 }));
 
 export default useAuthStore;

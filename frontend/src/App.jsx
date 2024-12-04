@@ -14,6 +14,7 @@ import Dashboard from "./components/Dashboard";
 import { useEffect } from "react";
 import TestLogin from "./screens/TestLogin";
 import ResetPassword from "./screens/ResetPassword";
+import ResetPasswordConfirm from "./screens/ResetPasswordConfirm";
 
 const App = () => {
   const { loadUser, isAuthenticated } = useAuthStore();
@@ -35,6 +36,10 @@ const App = () => {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route
+            path="/password/reset/confirm/:uid/:token"
+            element={<ResetPasswordConfirm />}
+          />
           <Route path="/test-login" element={<TestLogin />} />
           <Route
             path="/dashboard"
