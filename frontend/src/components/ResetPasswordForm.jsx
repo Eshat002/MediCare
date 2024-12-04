@@ -34,10 +34,7 @@ const ResetPasswordForm = () => {
   return (
     <div className="flex flex-col">
       <div className="headline-container mb-8">
-        <HeadlineSection
-          className="font-bold lg:text-4xl text-2xl capitalize text-primaryBlack"
-          text="Reset password"
-        />
+        <HeadlineSection text="Reset password" />
 
         <p className="text-base text-primaryBlack/70 font-normal mt-2">
           Enter your email address to reset your password.

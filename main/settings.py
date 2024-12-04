@@ -63,7 +63,7 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=2),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     # 'AUTH_TOKEN_CLASSES': (
     #     'rest_framework_simplejwt.tokens.AccessToken',
@@ -94,6 +94,9 @@ DJOSER = {
         "user_delete": "djoser.serializers.UserDeleteSerializer",
     },
 }
+DOMAIN = "localhost:5173"
+
+PASSWORD_RESET_TIMEOUT = config("PASSWORD_RESET_TIMEOUT", cast=int)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
