@@ -15,6 +15,9 @@ import { useEffect } from "react";
 import TestLogin from "./screens/TestLogin";
 import ResetPassword from "./screens/ResetPassword";
 import ResetPasswordConfirm from "./screens/ResetPasswordConfirm";
+import Signup from "./screens/Signup";
+import Activate from "./screens/Activate";
+import ResendActivation from "./screens/ResendActivation";
 
 const App = () => {
   const { loadUser, isAuthenticated } = useAuthStore();
@@ -30,11 +33,15 @@ const App = () => {
       <Layout>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route path="/Signup" element={<Signup />} />
+          {/* activation after signup */}
+          <Route path="/activate/:uid/:token" element={<Activate />} />
+          <Route path="/resend/activation" element={<ResendActivation />} />
           <Route
             path="/login"
             element={isAuthenticated ? <Navigate to="/" /> : <Login />}
           />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/password/reset/confirm/:uid/:token"

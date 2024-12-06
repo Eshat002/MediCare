@@ -22,14 +22,19 @@ const Layout = ({ children }) => {
   const location = useLocation(); // Get the current route
 
   // Define routes where the footer should be hidden
-  const hideFooterRoutes = ["/login", "/signup", "/reset-password"];
+  const hideFooterRoutes = [
+    "/login",
+    // "/activate/:uid/:token",
+    "/signup",
+    "/reset-password",
+  ];
 
   return (
     <div>
       <Navbar />
       {children}
       {/* Render Footer only if the current route is not in the hideFooterRoutes */}
-      {!hideFooterRoutes.includes(location.pathname) && <Footer />}
+      {/* {!hideFooterRoutes.includes(location.pathname) && <Footer />} */}
     </div>
   );
 };

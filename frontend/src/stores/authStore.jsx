@@ -118,6 +118,81 @@ const useAuthStore = create((set) => ({
       return { success: false, error: errorData };
     }
   },
+
+  // Signup action
+  signup: async (first_name, last_name, email, password, re_password) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      await axios.post(
+        `${BaseUrl}/auth/users/`,
+        {
+          first_name,
+          last_name,
+          email,
+          password,
+          re_password,
+        },
+        config
+      );
+      console.log("Signup successful, verification email sent");
+      return { success: true };
+    } catch (error) {
+      const errorData = error.response ? error.response.data : error.message;
+      console.error("Signup error:", errorData);
+      return { success: false, error: errorData };
+    }
+  },
+
+  // Verify user account
+  verifyAccount: async (uid, token) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      await axios.post(
+        `${BaseUrl}/auth/users/activation/`,
+        { uid, token },
+        config
+      );
+      console.log("Account successfully verified");
+      return { success: true };
+    } catch (error) {
+      const errorData = error.response ? error.response.data : error.message;
+      console.error("Verification error:", errorData);
+      return { success: false, error: errorData };
+    }
+  },
+
+  // Resend activation email
+  resendActivationEmail: async (email) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      await axios.post(
+        `${BaseUrl}/auth/users/resend_activation/`,
+        { email },
+        config
+      );
+      console.log("Activation email resent");
+      return { success: true };
+    } catch (error) {
+      const errorData = error.response ? error.response.data : error.message;
+      console.error("Resend activation email error:", errorData);
+      return { success: false, error: errorData };
+    }
+  },
 }));
 
 export default useAuthStore;
