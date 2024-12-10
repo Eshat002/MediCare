@@ -1,6 +1,6 @@
 import React from "react";
 import Doctor from "../assets/Img/Doctor.jpg";
-import ResetPasswordForm from "../components/ResetPasswordForm";
+import ResetPasswordForm from "../components/AuthForms/ResetPasswordForm";
 
 const Login = () => {
   return (

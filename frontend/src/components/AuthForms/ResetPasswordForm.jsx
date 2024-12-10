@@ -1,8 +1,8 @@
-import useAuthStore from "../stores/authStore";
-import HeadlineSection from "../components/SectionHeadline";
+import useAuthStore from "../../stores/authStore";
+import HeadlineSection from "../SectionHeadline";
 import { CiMail } from "react-icons/ci";
 import { useState } from "react";
-import { AuthBtn } from "./AuthBtn";
+import { AuthBtn } from "../AuthBtn";
 
 const ResetPasswordForm = () => {
   const { requestPasswordReset } = useAuthStore();

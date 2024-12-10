@@ -73,8 +73,6 @@ SIMPLE_JWT = {
  
 
 DJOSER = {
-    # 'PASSWORD_RESET_CONFIRM_TIMEOUT': 3600,
-    # 'ACTIVATION_TOKEN_LIFESPAN': timedelta(minutes=5),   
 
     "LOGIN_FIELD": "email",
     "USER_CREATE_PASSWORD_RETYPE": True,

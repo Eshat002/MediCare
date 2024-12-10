@@ -1,6 +1,6 @@
 import React from "react";
 import Doctor from "../assets/Img/Doctor.jpg";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/AuthForms/LoginForm";
 
 const Login = () => {
   return (

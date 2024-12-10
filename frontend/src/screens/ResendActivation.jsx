@@ -39,9 +39,9 @@ const ResendActivation = () => {
   };
 
   // Render multiple error messages (if present in an array)
-  const renderErrorMessages = (errorArray) => {
-    if (Array.isArray(errorArray)) {
-      return errorArray.map((err, index) => (
+  const renderErrorMessages = (error) => {
+    if (Array.isArray(error)) {
+      return error.map((err, index) => (
         <p
           key={index}
           className="text-red-500 text-sm text-start font-medium rounded-lg mb-4"
@@ -49,10 +49,16 @@ const ResendActivation = () => {
           {formatError(err)}{" "}
         </p>
       ));
+    } else if (typeof error === "string") {
+      // Handle single error strings
+      return (
+        <p className="text-red-500 text-sm text-start font-medium rounded-lg mb-2">
+          {formatError(error)}
+        </p>
+      );
     }
-    return null; // Return nothing if the error is not an array
+    return null; // Return nothing if error is not valid
   };
-
   return (
     <div className="flex justify-center items-center mt-40">
       <div className="w-1/4">
@@ -80,8 +86,8 @@ const ResendActivation = () => {
           </div>
 
           {/* Display Non-Field Errors */}
-          {formError.non_field_errors &&
-            renderErrorMessages(formError.non_field_errors)}
+          {/* {formError.non_field_errors &&
+            renderErrorMessages(formError.non_field_errors)} */}
           {/* General Error */}
           {/* Display Token Errors */}
           {formError.token && renderErrorMessages(formError.token)}

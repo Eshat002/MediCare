@@ -38,33 +38,38 @@ const Activate = () => {
 
   // Helper function to format error messages
   const formatError = (error) => {
+    if (error === "Invalid user id or user doesn't exist.")
+      return "User does not exist";
+
     if (error === "Invalid token for given user.")
       return "The activation link is invalid. Please request a new one.";
+
+    if (error === "Stale token for given user.")
+      return "Your account is already activated. You can log in to continue.";
 
     return error; // Return the original message for other cases
   };
 
-  // Render multiple error messages (if present in an array)
-  const renderErrorMessages = (errorArray) => {
-    if (Array.isArray(errorArray)) {
-      return errorArray.map((err, index) => (
+  const renderErrorMessages = (error) => {
+    if (Array.isArray(error)) {
+      return error.map((err, index) => (
         <p
           key={index}
           className="text-red-500 text-sm text-start font-medium rounded-lg mb-4"
         >
           {formatError(err)}{" "}
-          <button
-            onClick={handleResend}
-            className="text-primaryBlack underline"
-          >
-            Resend
-          </button>
         </p>
       ));
+    } else if (typeof error === "string") {
+      // Handle single error strings
+      return (
+        <p className="text-red-500 text-sm text-start font-medium rounded-lg mb-2">
+          {formatError(error)}
+        </p>
+      );
     }
-    return null; // Return nothing if the error is not an array
+    return null; // Return nothing if error is not valid
   };
-
   return (
     <div className="flex justify-center items-center mt-40">
       <div className="max-w-md">
@@ -74,15 +79,29 @@ const Activate = () => {
 
         <form onSubmit={handleSubmit}>
           {/* Display Non-Field Errors */}
-          {formError.non_field_errors &&
-            renderErrorMessages(formError.non_field_errors)}
-          {/* General Error */}
+          {/* {formError.non_field_errors &&
+            renderErrorMessages(formError.non_field_errors)} */}
 
+          {/* User not found */}
+          {formError.uid && renderErrorMessages(formError.uid)}
           {/* Display Token Errors */}
           {formError.token && renderErrorMessages(formError.token)}
+          {/* Already used token Errors */}
+          {formError.detail && renderErrorMessages(formError.detail)}
+
+          {/* Resend Button */}
+          {(formError.token || formError.detail) && (
+            <button
+              onClick={handleResend}
+              className="text-primaryBlack underline text-sm font-medium mb-4"
+            >
+              Resend
+            </button>
+          )}
+
           {/* General Error */}
           {formError.general && (
-            <p className="text-red-500 text-sm text-center font-medium rounded-lg mb-4">
+            <p className="text-red-500 text-sm text-center font-medium rounded-lg mb-2">
               {formError.general}
             </p>
           )}

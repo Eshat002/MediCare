@@ -1,8 +1,8 @@
-import useAuthStore from "../stores/authStore";
-import HeadlineSection from "../components/SectionHeadline";
+import useAuthStore from "../../stores/authStore";
+import HeadlineSection from "../SectionHeadline";
 import { CiLock } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
-import { AuthBtn } from "./AuthBtn";
+import { AuthBtn } from "../AuthBtn";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -50,20 +50,26 @@ const ResetPasswordConfirmForm = () => {
   };
 
   // Render multiple error messages (if present in an array)
-  const renderErrorMessages = (errorArray) => {
-    if (Array.isArray(errorArray)) {
-      return errorArray.map((err, index) => (
+  const renderErrorMessages = (error) => {
+    if (Array.isArray(error)) {
+      return error.map((err, index) => (
         <p
           key={index}
           className="text-red-500 text-sm text-start font-medium rounded-lg mb-4"
         >
-          {formatError(err)}
+          {formatError(err)}{" "}
         </p>
       ));
+    } else if (typeof error === "string") {
+      // Handle single error strings
+      return (
+        <p className="text-red-500 text-sm text-start font-medium rounded-lg mb-2">
+          {formatError(error)}
+        </p>
+      );
     }
-    return null; // Return nothing if the error is not an array
+    return null; // Return nothing if error is not valid
   };
-
   return (
     <div className="flex flex-col">
       <div className="headline-container mb-8">

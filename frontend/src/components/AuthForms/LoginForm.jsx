@@ -1,11 +1,11 @@
-import useAuthStore from "../stores/authStore";
-import HeadlineSection from "../components/SectionHeadline";
-import Google from "../assets/svg/Google";
+import useAuthStore from "../../stores/authStore";
+import HeadlineSection from "../SectionHeadline";
+import Google from "../../assets/svg/Google";
 import { CiLock } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { AuthBtn } from "./AuthBtn";
+import { AuthBtn } from "../AuthBtn";
 import { useState } from "react";
 
 const LoginForm = () => {
