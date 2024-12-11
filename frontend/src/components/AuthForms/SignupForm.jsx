@@ -4,7 +4,7 @@ import { CiLock, CiMail, CiMedal } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { AuthBtn } from "../AuthBtn";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 
 const SignupForm = () => {
@@ -188,6 +188,12 @@ const SignupForm = () => {
           <AuthBtn text="Sign up" type="submit" />
         </div>
       </form>
+      <p className="text-center text-base text-primaryBlack font-normal py-4">
+        Already have an account?
+        <Link className="font-medium px-1" to="/login">
+          Login
+        </Link>{" "}
+      </p>
     </div>
   );
 };

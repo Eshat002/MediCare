@@ -108,7 +108,7 @@ const LoginForm = () => {
 
           <div>
             <Link
-              to="/forgot-password"
+              to="/reset-password"
               className="text-base text-primaryBlack font-normal underline"
             >
               Forget Password?

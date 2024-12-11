@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "djoser",
     "rest_framework_simplejwt",
-    #"rest_framework_simplejwt.token_blacklist",
+    "rest_framework_simplejwt.token_blacklist",
 ]
 
 AUTH_USER_MODEL = "account.UserAccount"
@@ -65,15 +65,15 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
     # 'AUTH_TOKEN_CLASSES': (
     #     'rest_framework_simplejwt.tokens.AccessToken',
     # )
 }
 
- 
 
 DJOSER = {
-
     "LOGIN_FIELD": "email",
     "USER_CREATE_PASSWORD_RETYPE": True,
     "USERNAME_CHANGED_EMAIL_CONFIRMATION": True,
