@@ -57,7 +57,7 @@ const SignupForm = () => {
       return error.map((err, index) => (
         <p
           key={index}
-          className="text-red-500 text-sm text-start font-medium rounded-lg mb-4"
+          className="text-red-500 text-sm text-start font-medium rounded-lg mb-4 first-letter:uppercase"
         >
           {formatError(err)}{" "}
         </p>
@@ -65,7 +65,7 @@ const SignupForm = () => {
     } else if (typeof error === "string") {
       // Handle single error strings
       return (
-        <p className="text-red-500 text-sm text-start font-medium rounded-lg mb-2">
+        <p className="text-red-500 text-sm text-start font-medium rounded-lg mb-2 first-letter:uppercase">
           {formatError(error)}
         </p>
       );

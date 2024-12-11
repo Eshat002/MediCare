@@ -1,5 +1,5 @@
 import React from "react";
-import Doctor from "../assets/Img/Doctor.jpg";
+import Doctor from "../assets/Img/Doctor3.webp";
 import SignupForm from "../components/AuthForms/SignupForm";
 
 const Signup = () => {
