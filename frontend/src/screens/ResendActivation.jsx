@@ -63,7 +63,7 @@ const ResendActivation = () => {
     <div className="flex justify-center items-center mt-40">
       <div className="w-1/4">
         <div className="headline-container mb-8">
-          <HeadlineSection text="Resend Email" />
+          <HeadlineSection text="Resend Link" />
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -97,7 +97,7 @@ const ResendActivation = () => {
               {formError.general}
             </p>
           )}
-          <AuthBtn text="Submit" type="Resend" />
+          <AuthBtn text="Resend" type="submit" />
         </form>
       </div>
     </div>

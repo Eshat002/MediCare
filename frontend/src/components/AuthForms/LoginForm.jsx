@@ -115,7 +115,7 @@ const LoginForm = () => {
             </Link>
           </div>
         </div>
-        <AuthBtn text="Log in" />
+        <AuthBtn text="Log in" type="submit" />
       </form>
       <p className="text-center text-base text-primaryBlack font-normal py-4">
         Not member yet?

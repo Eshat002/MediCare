@@ -61,7 +61,7 @@ const ResetPasswordForm = () => {
             {successMsg}
           </div>
         )}
-        <AuthBtn text="Submit" />
+        <AuthBtn type="submit" text="Submit" />
       </form>
     </div>
   );

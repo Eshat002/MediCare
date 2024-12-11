@@ -74,7 +74,7 @@ const Activate = () => {
     <div className="flex justify-center items-center mt-40">
       <div className="max-w-md">
         <div className="headline-container mb-8">
-          <HeadlineSection text="Verify Account" />
+          <HeadlineSection text="Activate Account" />
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -106,7 +106,7 @@ const Activate = () => {
             </p>
           )}
 
-          <AuthBtn text="Submit" type="Activate" />
+          <AuthBtn text="Activate" type="submit" />
         </form>
       </div>
     </div>

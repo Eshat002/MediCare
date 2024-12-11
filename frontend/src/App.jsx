@@ -36,7 +36,7 @@ const App = () => {
           <Route path="/Signup" element={<Signup />} />
           {/* activation after signup */}
           <Route path="/activate/:uid/:token" element={<Activate />} />
-          <Route path="/resend/activation" element={<ResendActivation />} />
+          <Route path="/resend/activation-url" element={<ResendActivation />} />
           <Route
             path="/login"
             element={isAuthenticated ? <Navigate to="/" /> : <Login />}

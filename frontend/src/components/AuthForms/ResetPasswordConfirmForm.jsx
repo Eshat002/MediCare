@@ -126,7 +126,7 @@ const ResetPasswordConfirmForm = () => {
           </p>
         )}
 
-        <AuthBtn text="Submit" type="submit" />
+        <AuthBtn text="Reset Password" type="submit" />
       </form>
     </div>
   );
