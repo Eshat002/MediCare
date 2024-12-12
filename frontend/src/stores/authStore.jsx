@@ -40,6 +40,7 @@ const useAuthStore = create((set) => ({
       } else {
         console.error("Error setting up request:", error.message);
       }
+      set({ isAuthenticated: false, accessToken: null });
 
       return { success: false };
     }
@@ -61,13 +62,17 @@ const useAuthStore = create((set) => ({
             Authorization: `Bearer ${token}`,
           },
         });
-        set({ user: response.data });
+        set({ user: response.data, isAuthenticated: true });
         console.log("user", response.data);
       } catch (error) {
         console.error("Error fetching user:", error);
+        set({ user: null, isAuthenticated: false });
       }
+    } else {
+      set({ user: null, isAuthenticated: false });
     }
   },
+
   // Request password reset
   requestPasswordReset: async (email) => {
     const config = {
@@ -163,10 +168,12 @@ const useAuthStore = create((set) => ({
         config
       );
       console.log("Account successfully verified");
+      set({ isAuthenticated: false });
       return { success: true };
     } catch (error) {
       const errorData = error.response ? error.response.data : error.message;
       console.error("Verification error:", errorData);
+      set({ isAuthenticated: false });
       return { success: false, error: errorData };
     }
   },

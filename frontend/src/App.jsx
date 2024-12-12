@@ -18,6 +18,7 @@ import ResetPasswordConfirm from "./screens/ResetPasswordConfirm";
 import Signup from "./screens/Signup";
 import Activate from "./screens/Activate";
 import ResendActivation from "./screens/ResendActivation";
+import Logout from "./screens/Logout";
 
 const App = () => {
   const { loadUser, isAuthenticated } = useAuthStore();
@@ -42,6 +43,7 @@ const App = () => {
             element={isAuthenticated ? <Navigate to="/" /> : <Login />}
           /> */}
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/password/reset/confirm/:uid/:token"
