@@ -27,7 +27,7 @@ const ResetPasswordConfirmForm = () => {
     );
 
     if (result.success) {
-      alert("Password reset successful!");
+      // alert("Password reset successful!");
       navigate("/login");
     } else {
       console.log("Error result:", result.error);

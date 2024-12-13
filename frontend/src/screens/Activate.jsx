@@ -20,7 +20,7 @@ const Activate = () => {
     const result = await verifyAccount(uid, token);
 
     if (result.success) {
-      alert("Activation successful!");
+      // alert("Activation successful!");
       navigate("/login");
     } else {
       console.log("Error result:", result.error);

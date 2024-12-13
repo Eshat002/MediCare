@@ -19,6 +19,7 @@ import Signup from "./screens/Signup";
 import Activate from "./screens/Activate";
 import ResendActivation from "./screens/ResendActivation";
 import Logout from "./screens/Logout";
+import PublicRoute from "./components/PublicRoute";
 
 const App = () => {
   const { loadUser, isAuthenticated } = useAuthStore();
@@ -33,17 +34,42 @@ const App = () => {
     <Router>
       <Layout>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/Signup" element={<Signup />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute>
+                <Signup />
+              </PublicRoute>
+            }
+          />
           {/* activation after signup */}
           <Route path="/activate/:uid/:token" element={<Activate />} />
           <Route path="/resend/activation-url" element={<ResendActivation />} />
-          {/* <Route
+          <Route
             path="/login"
-            element={isAuthenticated ? <Navigate to="/" /> : <Login />}
-          /> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/logout"
+            element={
+              <ProtectedRoute>
+                <Logout />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/password/reset/confirm/:uid/:token"
@@ -58,6 +84,8 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          {/* Fallback for Invalid URLs */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Layout>
     </Router>

@@ -31,7 +31,7 @@ const SignupForm = () => {
     );
 
     if (result.success) {
-      alert("Signup success");
+      // alert("Signup success");
       navigate("/login");
     } else {
       console.log("Error result:", result.error);
