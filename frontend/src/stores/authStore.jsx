@@ -1,8 +1,6 @@
 // src/stores/authStore.js
 import { create } from "zustand";
-import axios from "axios";
-
-const BaseUrl = import.meta.env.VITE_API_URL;
+import apiClient from "../utils/axiosClient";
 
 const useAuthStore = create((set) => ({
   user: null,
@@ -18,8 +16,8 @@ const useAuthStore = create((set) => ({
     };
 
     try {
-      const response = await axios.post(
-        `${BaseUrl}/auth/jwt/create/`,
+      const response = await apiClient.post(
+        "/auth/jwt/create/",
         { email, password },
         config // Pass the config object here
       );
@@ -57,7 +55,7 @@ const useAuthStore = create((set) => ({
     const token = localStorage.getItem("accessToken");
     if (token) {
       try {
-        const response = await axios.get(`${BaseUrl}/auth/users/me/`, {
+        const response = await apiClient.get("/auth/users/me/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -82,11 +80,7 @@ const useAuthStore = create((set) => ({
     };
 
     try {
-      await axios.post(
-        `${BaseUrl}/auth/users/reset_password/`,
-        { email },
-        config
-      );
+      await apiClient.post("/auth/users/reset_password/", { email }, config);
       console.log("Password reset email sent");
       return { success: true };
     } catch (error) {
@@ -105,8 +99,8 @@ const useAuthStore = create((set) => ({
     };
 
     try {
-      await axios.post(
-        `${BaseUrl}/auth/users/reset_password_confirm/`,
+      await apiClient.post(
+        "/auth/users/reset_password_confirm/",
         {
           uid,
           token,
@@ -133,8 +127,8 @@ const useAuthStore = create((set) => ({
     };
 
     try {
-      await axios.post(
-        `${BaseUrl}/auth/users/`,
+      await apiClient.post(
+        "/auth/users/",
         {
           first_name,
           last_name,
@@ -162,11 +156,7 @@ const useAuthStore = create((set) => ({
     };
 
     try {
-      await axios.post(
-        `${BaseUrl}/auth/users/activation/`,
-        { uid, token },
-        config
-      );
+      await apiClient.post("/auth/users/activation/", { uid, token }, config);
       console.log("Account successfully verified");
       set({ isAuthenticated: false });
       return { success: true };
@@ -187,11 +177,7 @@ const useAuthStore = create((set) => ({
     };
 
     try {
-      await axios.post(
-        `${BaseUrl}/auth/users/resend_activation/`,
-        { email },
-        config
-      );
+      await apiClient.post("/auth/users/resend_activation/", { email }, config);
       console.log("Activation email resent");
       return { success: true };
     } catch (error) {
