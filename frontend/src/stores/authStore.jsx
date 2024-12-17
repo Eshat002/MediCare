@@ -24,7 +24,9 @@ const useAuthStore = create((set) => ({
 
       const accessToken = response.data.access;
       console.log("access", accessToken);
+      const refreshToken = response.data.refresh;
 
+      localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("accessToken", accessToken);
 
       set({ accessToken, isAuthenticated: true });
@@ -47,6 +49,7 @@ const useAuthStore = create((set) => ({
   // Logout action
   logout: () => {
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
     set({ user: null, accessToken: null, isAuthenticated: false });
   },
 

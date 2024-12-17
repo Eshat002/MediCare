@@ -1,5 +1,5 @@
 import React from "react";
-import Doctor from "../assets/Img/Doctor.jpg";
+import Doctor from "../assets/Img/Doctor4.jpg";
 import ResetPasswordConfirmForm from "../components/AuthForms/ResetPasswordConfirmForm";
 
 const ResetPasswordConfirm = () => {

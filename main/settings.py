@@ -62,6 +62,7 @@ REST_FRAMEWORK = {
 # )
 
 
+
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=2),
@@ -69,14 +70,17 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_COOKIE': 'refresh_token',
-    'AUTH_COOKIE_SECURE': True,  # Set to True in production
+    'AUTH_COOKIE_SECURE': True,  
     'AUTH_COOKIE_HTTP_ONLY': True,
     'AUTH_COOKIE_SAMESITE': 'Lax',
-    # 'AUTH_TOKEN_CLASSES': (
-    #     'rest_framework_simplejwt.tokens.AccessToken',
-    # )
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+    'AUTH_TOKEN_CLASSES': (
+        'rest_framework_simplejwt.tokens.AccessToken',
+    )
 }
 
+ 
 
 DJOSER = {
     "LOGIN_FIELD": "email",
@@ -120,7 +124,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
-
+ 
 
 ROOT_URLCONF = "main.urls"
 

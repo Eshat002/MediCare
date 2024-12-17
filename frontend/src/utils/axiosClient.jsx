@@ -1,4 +1,80 @@
+// import axios from "axios";
+// import useAuthStore from "../stores/authStore";
+
+// const BaseUrl = import.meta.env.VITE_API_URL;
+
+// const apiClient = axios.create({
+//   baseURL: BaseUrl,
+//   withCredentials: true, // Allow sending HttpOnly cookies with requests
+// });
+
+// // Function to refresh the token
+// async function refreshToken() {
+//   try {
+//     // Get the refresh token from cookies or localStorage
+//     const refreshToken = localStorage.getItem("refreshToken");
+//     console.log("newR", refreshToken);
+
+//     if (!refreshToken) {
+//       console.error("No refresh token found");
+//       useAuthStore.getState().logout(); // Log out user if refresh token is missing
+//       return null;
+//     }
+
+//     const response = await axios.post(
+//       `${BaseUrl}/auth/jwt/refresh/`,
+//       { refresh: refreshToken }, // Send refresh token in the request body
+//       { withCredentials: true }
+//     );
+
+//     const newAccessToken = response.data.access;
+//     const newRefreshToken = response.data.refresh;
+//     localStorage.setItem("accessToken", newAccessToken);
+//     localStorage.setItem("refreshToken", newRefreshToken);
+
+//     console.log("Token refreshed successfully");
+//     return newAccessToken;
+//   } catch (error) {
+//     console.error(
+//       "Failed to refresh token:",
+//       error.response?.data || error.message
+//     );
+//     // Logout user if refresh fails
+//     useAuthStore.getState().logout();
+//     return null;
+//   }
+// }
+
+// // Function to start token refresh on an interval
+// function startTokenRefreshInterval() {
+//   // Refresh token every 2 minutes (adjust timing based on token expiration)
+//   const intervalTime = 2 * 60 * 1000;
+
+//   setInterval(async () => {
+//     console.log("Refreshing token...");
+//     await refreshToken();
+//   }, intervalTime);
+// }
+
+// // Initialize token refresh when the app starts
+// startTokenRefreshInterval();
+
+// // Axios request interceptor to attach access token
+// apiClient.interceptors.request.use(
+//   (config) => {
+//     const token = localStorage.getItem("accessToken");
+//     if (token) {
+//       config.headers.Authorization = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error)
+// );
+
+// export default apiClient;
+// diff;
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import useAuthStore from "../stores/authStore";
 
 const BaseUrl = import.meta.env.VITE_API_URL;
@@ -8,7 +84,72 @@ const apiClient = axios.create({
   withCredentials: true, // Allow sending HttpOnly cookies with requests
 });
 
-// Axios request interceptor
+// Function to refresh the token
+async function refreshToken() {
+  try {
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (!refreshToken) {
+      console.error("No refresh token found");
+      useAuthStore.getState().logout(); // Log out user if refresh token is missing
+      return null;
+    }
+
+    // Call refresh endpoint
+    const response = await axios.post(
+      `${BaseUrl}/auth/jwt/refresh/`,
+      { refresh: refreshToken },
+      { withCredentials: true }
+    );
+
+    const { access: newAccessToken, refresh: newRefreshToken } = response.data;
+
+    // Save new tokens
+    localStorage.setItem("accessToken", newAccessToken);
+    localStorage.setItem("refreshToken", newRefreshToken);
+
+    console.log("Token refreshed successfully");
+    scheduleTokenRefresh(newAccessToken); // Schedule the next refresh
+    return newAccessToken;
+  } catch (error) {
+    console.error(
+      "Failed to refresh token:",
+      error.response?.data || error.message
+    );
+    useAuthStore.getState().logout(); // Log out on failure
+    return null;
+  }
+}
+
+// Function to schedule the token refresh dynamically
+function scheduleTokenRefresh(token) {
+  if (!token) return;
+
+  // Decode the token to get expiration time
+  const decoded = jwtDecode(token);
+  const expTime = decoded.exp * 1000; // Expiration time in milliseconds
+  const currentTime = Date.now();
+
+  // Calculate refresh time (5 seconds before expiration)
+  const refreshTime = expTime - currentTime - 5000;
+
+  if (refreshTime > 0) {
+    console.log(`Next token refresh in ${refreshTime / 1000} seconds`);
+    setTimeout(async () => {
+      console.log("Refreshing token...");
+      await refreshToken();
+    }, refreshTime);
+  }
+}
+
+// Function to initialize the token refresh logic
+function initializeTokenRefresh() {
+  const token = localStorage.getItem("accessToken");
+  if (token) {
+    scheduleTokenRefresh(token); // Schedule refresh for existing token
+  }
+}
+
+// Axios request interceptor to attach access token
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("accessToken");
@@ -20,43 +161,94 @@ apiClient.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Axios response interceptor for token refresh
-apiClient.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-
-    if (
-      error.response &&
-      error.response.status === 401 &&
-      !originalRequest._retry
-    ) {
-      originalRequest._retry = true; // Prevent infinite retry loops
-
-      try {
-        // Send a request to refresh the access token using the HttpOnly cookie
-        const response = await axios.post(
-          `${BaseUrl}/auth/jwt/refresh/`,
-          {}, // Empty body because refresh token is in the cookie
-          { withCredentials: true }
-        );
-
-        const newAccessToken = response.data.access;
-        localStorage.setItem("accessToken", newAccessToken);
-
-        // Update the Authorization header for the original request
-        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-
-        // Retry the original request
-        return apiClient(originalRequest);
-      } catch (refreshError) {
-        console.error("Refresh token error:", refreshError);
-        useAuthStore.getState().logout(); // Log out if refresh fails
-      }
-    }
-
-    return Promise.reject(error);
-  }
-);
+// Initialize token refresh logic when the app starts
+initializeTokenRefresh();
 
 export default apiClient;
+
+// import axios from "axios";
+// import { jwtDecode } from "jwt-decode";
+// import useAuthStore from "../stores/authStore";
+
+// const BaseUrl = import.meta.env.VITE_API_URL;
+
+// const apiClient = axios.create({
+//   baseURL: BaseUrl,
+//   withCredentials: true,
+// });
+
+// // Function to refresh the token
+// async function refreshToken() {
+//   try {
+//     const refreshToken = localStorage.getItem("refreshToken");
+//     if (!refreshToken) throw new Error("No refresh token available");
+
+//     const response = await axios.post(
+//       `${BaseUrl}/auth/jwt/refresh/`,
+//       { refresh: refreshToken },
+//       { withCredentials: true }
+//     );
+
+//     const { access: newAccessToken, refresh: newRefreshToken } = response.data;
+
+//     localStorage.setItem("accessToken", newAccessToken);
+//     localStorage.setItem("refreshToken", newRefreshToken);
+
+//     console.log("Token refreshed successfully");
+//     return newAccessToken;
+//   } catch (error) {
+//     console.error(
+//       "Failed to refresh token:",
+//       error.response?.data || error.message
+//     );
+//     useAuthStore.getState().logout(); // Log out user on failure
+//     return null;
+//   }
+// }
+
+// // Request interceptor: Check and refresh token before each request
+// apiClient.interceptors.request.use(
+//   async (config) => {
+//     const accessToken = localStorage.getItem("accessToken");
+//     if (accessToken) {
+//       const decoded = jwtDecode(accessToken);
+//       const currentTime = Date.now() / 1000; // Current time in seconds
+
+//       // Check if the token is about to expire (buffer of 5 seconds)
+//       if (decoded.exp - currentTime < 5) {
+//         console.log("Access token about to expire, refreshing...");
+//         const newAccessToken = await refreshToken();
+//         if (newAccessToken) {
+//           config.headers.Authorization = `Bearer ${newAccessToken}`;
+//         }
+//       } else {
+//         config.headers.Authorization = `Bearer ${accessToken}`;
+//       }
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error)
+// );
+
+// // Response interceptor to retry requests after refreshing the token
+// apiClient.interceptors.response.use(
+//   (response) => response,
+//   async (error) => {
+//     const originalRequest = error.config;
+
+//     if (error.response?.status === 401 && !originalRequest._retry) {
+//       originalRequest._retry = true;
+//       console.log("Received 401 error, attempting token refresh...");
+
+//       const newAccessToken = await refreshToken();
+//       if (newAccessToken) {
+//         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+//         return apiClient(originalRequest); // Retry the original request
+//       }
+//     }
+
+//     return Promise.reject(error);
+//   }
+// );
+
+// export default apiClient;
