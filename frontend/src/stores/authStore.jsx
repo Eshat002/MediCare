@@ -1,6 +1,10 @@
 // src/stores/authStore.js
 import { create } from "zustand";
-import apiClient from "../utils/axiosClient";
+// import apiClient from "../utils/axiosClient";
+import {
+  unauthenticatedApiClient,
+  authenticatedApiClient,
+} from "../utils/axiosClient";
 
 const useAuthStore = create((set) => ({
   user: null,
@@ -16,7 +20,7 @@ const useAuthStore = create((set) => ({
     };
 
     try {
-      const response = await apiClient.post(
+      const response = await unauthenticatedApiClient.post(
         "/auth/jwt/create/",
         { email, password },
         config // Pass the config object here
@@ -58,7 +62,7 @@ const useAuthStore = create((set) => ({
     const token = localStorage.getItem("accessToken");
     if (token) {
       try {
-        const response = await apiClient.get("/auth/users/me/", {
+        const response = await authenticatedApiClient.get("/auth/users/me/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -83,7 +87,9 @@ const useAuthStore = create((set) => ({
     };
 
     try {
-      await apiClient.post("/auth/users/reset_password/", { email }, config);
+      await unauthenticatedApiClient.post("/auth/users/reset_password/", {
+        email,
+      });
       console.log("Password reset email sent");
       return { success: true };
     } catch (error) {

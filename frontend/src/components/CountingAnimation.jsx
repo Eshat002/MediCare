@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const CountingAnimation = ({ target, sign }) => {
   const [count, setCount] = useState(0);
 
-  const duration = 3000;
+  const duration = 1000;
   const incrementTime = Math.floor(duration / target);
 
   useEffect(() => {
