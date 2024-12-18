@@ -1,3 +1,108 @@
+// final
+import axios from "axios";
+import useAuthStore from "../stores/authStore";
+
+const BaseUrl = import.meta.env.VITE_API_URL;
+
+// Create an Axios instance for unauthenticated requests
+const unauthenticatedApiClient = axios.create({
+  baseURL: BaseUrl,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// Create an Axios instance for authenticated requests
+const authenticatedApiClient = axios.create({
+  baseURL: BaseUrl,
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// Token refresh and interceptors
+let isRefreshing = false;
+let refreshQueue = [];
+
+const refreshToken = async () => {
+  try {
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (!refreshToken) throw new Error("No refresh token available");
+
+    const response = await axios.post(
+      `${BaseUrl}/auth/jwt/refresh/`,
+      { refresh: refreshToken },
+      { withCredentials: true }
+    );
+
+    const { access: newAccessToken, refresh: newRefreshToken } = response.data;
+
+    // Save new tokens
+    localStorage.setItem("accessToken", newAccessToken);
+    localStorage.setItem("refreshToken", newRefreshToken);
+
+    console.log("Token refreshed successfully");
+    return newAccessToken;
+  } catch (error) {
+    console.error("Failed to refresh token:", error);
+    useAuthStore.getState().logout();
+    return null;
+  }
+};
+
+const retryFailedRequests = (newAccessToken) => {
+  refreshQueue.forEach((callback) => callback(newAccessToken));
+  refreshQueue = [];
+};
+
+// Add token to requests
+authenticatedApiClient.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Refresh token on 401 errors
+authenticatedApiClient.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      if (!isRefreshing) {
+        isRefreshing = true;
+        const newAccessToken = await refreshToken();
+        isRefreshing = false;
+
+        if (newAccessToken) {
+          retryFailedRequests(newAccessToken);
+          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+          return authenticatedApiClient(originalRequest);
+        }
+      } else {
+        return new Promise((resolve) => {
+          refreshQueue.push((token) => {
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            resolve(authenticatedApiClient(originalRequest));
+          });
+        });
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+export { unauthenticatedApiClient, authenticatedApiClient };
+
 // import axios from "axios";
 // import useAuthStore from "../stores/authStore";
 
@@ -450,103 +555,3 @@
 // example
 // apiClient.get("/public-endpoint", { skipAuth: true }); // No Authorization header
 // apiClient.get("/protected-endpoint"); // Adds Auth
-
-// final
-
-import axios from "axios";
-import useAuthStore from "../stores/authStore";
-
-const BaseUrl = import.meta.env.VITE_API_URL;
-
-// Create an Axios instance for unauthenticated requests
-const unauthenticatedApiClient = axios.create({
-  baseURL: BaseUrl,
-});
-
-// Create an Axios instance for authenticated requests
-const authenticatedApiClient = axios.create({
-  baseURL: BaseUrl,
-  withCredentials: true,
-});
-
-// Token refresh and interceptors
-let isRefreshing = false;
-let refreshQueue = [];
-
-const refreshToken = async () => {
-  try {
-    const refreshToken = localStorage.getItem("refreshToken");
-    if (!refreshToken) throw new Error("No refresh token available");
-
-    const response = await axios.post(
-      `${BaseUrl}/auth/jwt/refresh/`,
-      { refresh: refreshToken },
-      { withCredentials: true }
-    );
-
-    const { access: newAccessToken, refresh: newRefreshToken } = response.data;
-
-    // Save new tokens
-    localStorage.setItem("accessToken", newAccessToken);
-    localStorage.setItem("refreshToken", newRefreshToken);
-
-    console.log("Token refreshed successfully");
-    return newAccessToken;
-  } catch (error) {
-    console.error("Failed to refresh token:", error);
-    useAuthStore.getState().logout();
-    return null;
-  }
-};
-
-const retryFailedRequests = (newAccessToken) => {
-  refreshQueue.forEach((callback) => callback(newAccessToken));
-  refreshQueue = [];
-};
-
-// Add token to requests
-authenticatedApiClient.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
-// Refresh token on 401 errors
-authenticatedApiClient.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
-      if (!isRefreshing) {
-        isRefreshing = true;
-        const newAccessToken = await refreshToken();
-        isRefreshing = false;
-
-        if (newAccessToken) {
-          retryFailedRequests(newAccessToken);
-          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-          return authenticatedApiClient(originalRequest);
-        }
-      } else {
-        return new Promise((resolve) => {
-          refreshQueue.push((token) => {
-            originalRequest.headers.Authorization = `Bearer ${token}`;
-            resolve(authenticatedApiClient(originalRequest));
-          });
-        });
-      }
-    }
-
-    return Promise.reject(error);
-  }
-);
-
-export { unauthenticatedApiClient, authenticatedApiClient };

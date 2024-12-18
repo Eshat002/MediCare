@@ -1,6 +1,8 @@
 // src/stores/authStore.js
-import { create } from "zustand";
 // import apiClient from "../utils/axiosClient";
+
+import { create } from "zustand";
+
 import {
   unauthenticatedApiClient,
   authenticatedApiClient,
@@ -13,21 +15,14 @@ const useAuthStore = create((set) => ({
 
   // Login action
   login: async (email, password) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
       const response = await unauthenticatedApiClient.post(
         "/auth/jwt/create/",
-        { email, password },
-        config // Pass the config object here
+        { email, password }
       );
 
       const accessToken = response.data.access;
-      console.log("access", accessToken);
+
       const refreshToken = response.data.refresh;
 
       localStorage.setItem("refreshToken", refreshToken);
@@ -63,9 +58,9 @@ const useAuthStore = create((set) => ({
     if (token) {
       try {
         const response = await authenticatedApiClient.get("/auth/users/me/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
         });
         set({ user: response.data, isAuthenticated: true });
         console.log("user", response.data);
@@ -80,12 +75,6 @@ const useAuthStore = create((set) => ({
 
   // Request password reset
   requestPasswordReset: async (email) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
       await unauthenticatedApiClient.post("/auth/users/reset_password/", {
         email,
@@ -101,22 +90,15 @@ const useAuthStore = create((set) => ({
 
   // Confirm password reset
   confirmPasswordReset: async (uid, token, new_password, re_new_password) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
-      await apiClient.post(
+      await unauthenticatedApiClient.post(
         "/auth/users/reset_password_confirm/",
         {
           uid,
           token,
           new_password,
           re_new_password,
-        },
-        config
+        }
       );
       console.log("Password successfully reset");
       return { success: true };
@@ -129,24 +111,14 @@ const useAuthStore = create((set) => ({
 
   // Signup action
   signup: async (first_name, last_name, email, password, re_password) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
-      await apiClient.post(
-        "/auth/users/",
-        {
-          first_name,
-          last_name,
-          email,
-          password,
-          re_password,
-        },
-        config
-      );
+      await unauthenticatedApiClient.post("/auth/users/", {
+        first_name,
+        last_name,
+        email,
+        password,
+        re_password,
+      });
       console.log("Signup successful, verification email sent");
       return { success: true };
     } catch (error) {
@@ -158,14 +130,11 @@ const useAuthStore = create((set) => ({
 
   // Verify user account
   verifyAccount: async (uid, token) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
-      await apiClient.post("/auth/users/activation/", { uid, token }, config);
+      await unauthenticatedApiClient.post("/auth/users/activation/", {
+        uid,
+        token,
+      });
       console.log("Account successfully verified");
       set({ isAuthenticated: false });
       return { success: true };
@@ -179,14 +148,10 @@ const useAuthStore = create((set) => ({
 
   // Resend activation email
   resendActivationEmail: async (email) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
-      await apiClient.post("/auth/users/resend_activation/", { email }, config);
+      await unauthenticatedApiClient.post("/auth/users/resend_activation/", {
+        email,
+      });
       console.log("Activation email resent");
       return { success: true };
     } catch (error) {

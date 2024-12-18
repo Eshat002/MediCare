@@ -7,7 +7,7 @@ import axios from "axios";
 import DoctorCardSkeleton from "./DoctorCardSkeleton";
 import { authenticatedApiClient } from "../utils/axiosClient";
 
-const BaseUrl = import.meta.env.VITE_API_URL;
+// const BaseUrl = import.meta.env.VITE_API_URL;
 
 const Doctors = ({ count = 6 }) => {
   const [doctors, setDoctors] = useState([]);
@@ -16,18 +16,13 @@ const Doctors = ({ count = 6 }) => {
 
   useEffect(() => {
     const fetchDoctors = async () => {
-      const token = localStorage.getItem("accessToken"); // Retrieve the token
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`, // Add the token here
-        },
-      };
+      // const token = localStorage.getItem("accessToken");
+      // const config = {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`, // Add the token here
+      //   },
+      // };
       try {
-        // const response = await axios.get(
-        //   `${BaseUrl}/api/doctors/?count=${count}`,
-        //   config
-        // );
-
         const response = await authenticatedApiClient.get(
           `/api/doctors/?count=${count}`
         );

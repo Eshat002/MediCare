@@ -6,9 +6,11 @@ import SectionHeadline from "./SectionHeadline.jsx";
 import BtnWithIcon from "./BtnWithIcon.jsx";
 import { FaTelegramPlane } from "react-icons/fa";
 import axios from "axios";
-import SuccessModal from "./SuccessModal"; // Add this import
-
-const BaseUrl = import.meta.env.VITE_API_URL;
+import SuccessModal from "./SuccessModal";
+import {
+  authenticatedApiClient,
+  unauthenticatedApiClient,
+} from "../utils/axiosClient";
 
 const Appointment = () => {
   const [formData, setFormData] = useState({
@@ -36,8 +38,8 @@ const Appointment = () => {
     setErrors({});
 
     try {
-      const response = await axios.post(
-        `${BaseUrl}/api/appointments/create/`,
+      const response = await unauthenticatedApiClient.post(
+        "/api/appointments/create/",
         formData
       );
 

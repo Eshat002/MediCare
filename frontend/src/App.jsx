@@ -41,6 +41,8 @@ const App = () => {
               <ProtectedRoute>
                 <Home />
               </ProtectedRoute>
+
+              // <Home />
             }
           />
           <Route
