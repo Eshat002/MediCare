@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import BtnWithoutIcon from "./BtnWithoutIcon";
+import useAuthStore from "../stores/authStore";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated } = useAuthStore();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -16,10 +18,7 @@ const Navbar = () => {
         {/* Logo Section */}
         <div className="relative z-50">
           <a href="/">
-        
-
-                    <img width={150} src={logo} alt="logo" />
-
+            <img width={150} src={logo} alt="logo" />
           </a>
         </div>
 
@@ -65,9 +64,12 @@ const Navbar = () => {
         </div>
 
         {/* Make Appointment Button for Desktop */}
-        <div className="hidden lg:block">
-          <BtnWithoutIcon text="Make Appointment" />
-        </div>
+
+        {isAuthenticated && (
+          <div className="hidden lg:block">
+            <BtnWithoutIcon text="Make Appointment" />
+          </div>
+        )}
       </div>
 
       {/* Mobile Menu */}
@@ -106,6 +108,7 @@ const Navbar = () => {
         >
           Blog
         </a>
+
         <button className="bg-primary text-white px-6 py-2 rounded-full hover:bg-sky-500">
           Make Appointment
         </button>

@@ -38,11 +38,11 @@ const App = () => {
             exact
             path="/"
             element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              //   <Home />
+              // </ProtectedRoute>
 
-              // <Home />
+              <Home />
             }
           />
           <Route
