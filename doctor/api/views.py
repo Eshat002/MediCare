@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 from ..models import Doctor
 from .serializers import DoctorSerializer
 
@@ -12,3 +12,7 @@ class DoctorListView(ListAPIView):
         return Doctor.objects.all()[:count]
 
  
+
+class DoctorCreateView(CreateAPIView):
+    queryset = Doctor.objects.all()
+    serializer_class = DoctorSerializer

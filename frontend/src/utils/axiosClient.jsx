@@ -37,7 +37,8 @@ const refreshToken = async () => {
     );
 
     const { access: newAccessToken, refresh: newRefreshToken } = response.data;
-
+       console.log("responsesssssssss", response.data)
+    
     // Save new tokens
     localStorage.setItem("accessToken", newAccessToken);
     localStorage.setItem("refreshToken", newRefreshToken);
@@ -51,6 +52,7 @@ const refreshToken = async () => {
   }
 };
 
+
 const retryFailedRequests = (newAccessToken) => {
   refreshQueue.forEach((callback) => callback(newAccessToken));
   refreshQueue = [];
@@ -60,6 +62,7 @@ const retryFailedRequests = (newAccessToken) => {
 authenticatedApiClient.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem("accessToken");
+    console.log("accessToken", accessToken)
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
@@ -70,16 +73,18 @@ authenticatedApiClient.interceptors.request.use(
 
 // Refresh token on 401 errors
 authenticatedApiClient.interceptors.response.use(
+
   (response) => response,
+ 
   async (error) => {
     const originalRequest = error.config;
-
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       if (!isRefreshing) {
         isRefreshing = true;
         const newAccessToken = await refreshToken();
+        console.log("newAccess", newAccessToken)
         isRefreshing = false;
 
         if (newAccessToken) {
@@ -102,6 +107,8 @@ authenticatedApiClient.interceptors.response.use(
 );
 
 export { unauthenticatedApiClient, authenticatedApiClient };
+
+
 
 // import axios from "axios";
 // import useAuthStore from "../stores/authStore";

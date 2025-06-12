@@ -22,12 +22,14 @@ const Doctors = ({ count = 6 }) => {
       //     Authorization: `Bearer ${token}`, // Add the token here
       //   },
       // };
+      
       try {
         const response = await authenticatedApiClient.get(
           `/api/doctors/?count=${count}`
         );
 
         setDoctors(response.data);
+        console.log(response)
       } catch (err) {
         setError(err.message);
       } finally {
