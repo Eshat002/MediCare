@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import CalenderGray from "../assets/svg/CalenderGray.jsx";
@@ -11,8 +12,13 @@ import {
   authenticatedApiClient,
   unauthenticatedApiClient,
 } from "../utils/axiosClient";
+import useAuthStore from "../stores/authStore.jsx";
+ 
 
 const Appointment = () => {
+  const navigate = useNavigate()
+  const { user, isAuthenticated } = useAuthStore();
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -33,12 +39,17 @@ const Appointment = () => {
     setFormData({ ...formData, appointment_date_time: selectedDates[0] });
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
 
+    if (!isAuthenticated) {
+      navigate("/login"); // ⬅️ redirect to login if not authenticated
+      return;
+    }
+
     try {
-      const response = await unauthenticatedApiClient.post(
+      const response = await authenticatedApiClient.post(
         "/api/appointments/create/",
         formData
       );
@@ -63,6 +74,7 @@ const Appointment = () => {
       }
     }
   };
+
 
   return (
     <section className="bg-white flex flex-col items-center justify-center py-20">

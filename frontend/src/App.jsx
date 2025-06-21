@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Home from "./screens/Home";
+import Doctors from "./screens/Doctors";
 import Layout from "./hocs/Layout";
 import useAuthStore from "./stores/authStore";
 import Login from "./screens/Login";
@@ -43,6 +44,14 @@ const App = () => {
               // </ProtectedRoute>
 
               <Home />
+            }
+          />
+
+              <Route
+            exact
+            path="/doctors"
+            element={
+              <Doctors/>
             }
           />
           <Route

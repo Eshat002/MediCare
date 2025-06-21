@@ -5,7 +5,7 @@ import { TiArrowRight } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DoctorCardSkeleton from "./DoctorCardSkeleton";
-import { authenticatedApiClient } from "../utils/axiosClient";
+import {unauthenticatedApiClient } from "../utils/axiosClient";
 
 // const BaseUrl = import.meta.env.VITE_API_URL;
 
@@ -24,7 +24,7 @@ const Doctors = ({ count = 6 }) => {
       // };
       
       try {
-        const response = await authenticatedApiClient.get(
+        const response = await  unauthenticatedApiClient.get(
           `/api/doctors/?count=${count}`
         );
 
