@@ -8,7 +8,7 @@ import {unauthenticatedApiClient } from "../utils/axiosClient";
 
 // const BaseUrl = import.meta.env.VITE_API_URL;
 
-const Doctors = ({ count = 6 }) => {
+const NewDoctors = ({ count = 6 }) => {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -62,12 +62,12 @@ const Doctors = ({ count = 6 }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <section className="mt-20 pt-10 pb-28 bg-bronze/5" id="Doctors">
+    <section className="mt-20 pt-10 pb-28 bg-bronze/5" id="NewDoctors">
       <div className="container mx-auto justify-center lg:px-24 px-6">
         <div className="section-headline-container mb-14 flex flex-col lg:flex-row lg:justify-between items-center gap-5">
-          <SectionHeadline text="Our Qualified Doctors" />
+          <SectionHeadline text="Our Qualified NewDoctors" />
           <button className="bg-transparent border-2 border-bronze shadow-lg text-lg font-medium flex items-center text-bronze px-6 py-3 rounded-full hover:bg-bronze hover:text-white">
-            <span className="me-2">See All Doctors</span>
+            <span className="me-2">See All NewDoctors</span>
             <TiArrowRight size={24} />
           </button>
         </div>
@@ -89,4 +89,4 @@ const Doctors = ({ count = 6 }) => {
   );
 };
 
-export default Doctors;
+export default NewDoctors;
