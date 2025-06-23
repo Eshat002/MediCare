@@ -25,7 +25,7 @@ const Navbar = () => {
         {/* Navbar Links for Desktop */}
         <div className="hidden lg:flex space-x-8">
           <a
-            href="#"
+            href="/"
             className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             Home

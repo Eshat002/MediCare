@@ -20,6 +20,7 @@ class Doctor(models.Model):
 
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    bio = models.CharField(max_length=400, null=True, blank=True)
     avatar = models.ImageField(
         upload_to="doctors/avatars/", default="doctors/avatars/doctor.png"
     )
@@ -30,6 +31,7 @@ class Doctor(models.Model):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     available = models.BooleanField(default=True)
     happy_patients = models.PositiveIntegerField()
+    certificates = models.PositiveIntegerField()
     doctor_at = models.CharField(max_length=100, default="iMedical Central Clinic, LA")
     date_joined = models.DateTimeField(auto_now_add=True)
     shadow = models.BooleanField(default=False)

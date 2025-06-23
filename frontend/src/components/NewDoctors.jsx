@@ -1,6 +1,6 @@
 import React from "react";
 import SectionHeadline from "./SectionHeadline";
-import DoctorCard from "./DoctorCard";
+import NewDoctorCard from "./NewDoctorCard";
 import { TiArrowRight } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import DoctorCardSkeleton from "./DoctorCardSkeleton";
@@ -62,22 +62,16 @@ const NewDoctors = ({ count = 6 }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <section className="mt-20 pt-10 pb-28 bg-bronze/5" id="NewDoctors">
-      <div className="container mx-auto justify-center lg:px-24 px-6">
-        <div className="section-headline-container mb-14 flex flex-col lg:flex-row lg:justify-between items-center gap-5">
-          <SectionHeadline text="Our Qualified NewDoctors" />
-          <button className="bg-transparent border-2 border-bronze shadow-lg text-lg font-medium flex items-center text-bronze px-6 py-3 rounded-full hover:bg-bronze hover:text-white">
-            <span className="me-2">See All NewDoctors</span>
-            <TiArrowRight size={24} />
-          </button>
-        </div>
-        <div className="doctor-card-container grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-7 gap-5">
+    <section className="pb-28" id="NewDoctors">
+      <div className="container mx-auto justify-center lg:px-52 px-6">
+        <div className="doctor-card-container space-y-6 gap-5">
           {doctors.map((doctor) => (
-            <DoctorCard
+            <NewDoctorCard
               key={doctor.id}
               full_name={doctor.full_name}
               avatar={doctor.avatar}
               happy_patients={doctor.happy_patients}
+              certificates={doctor.certificates}
               specialization={doctor.specialization}
               doctor_at={doctor.doctor_at}
               shadow={doctor.shadow}
