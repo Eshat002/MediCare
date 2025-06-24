@@ -4,11 +4,11 @@ import NewDoctorCard from "./NewDoctorCard";
 import { TiArrowRight } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import DoctorCardSkeleton from "./DoctorCardSkeleton";
-import {unauthenticatedApiClient } from "../utils/axiosClient";
+import { unauthenticatedApiClient } from "../utils/axiosClient";
 
 // const BaseUrl = import.meta.env.VITE_API_URL;
 
-const NewDoctors = ({ count = 6 }) => {
+const NewDoctors = ({ count = 4 }) => {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,14 +21,14 @@ const NewDoctors = ({ count = 6 }) => {
       //     Authorization: `Bearer ${token}`, // Add the token here
       //   },
       // };
-      
+
       try {
-        const response = await  unauthenticatedApiClient.get(
+        const response = await unauthenticatedApiClient.get(
           `/api/doctors/?count=${count}`
         );
 
         setDoctors(response.data);
-        console.log(response)
+        console.log(response);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -69,6 +69,7 @@ const NewDoctors = ({ count = 6 }) => {
             <NewDoctorCard
               key={doctor.id}
               full_name={doctor.full_name}
+              bio={doctor.bio}
               avatar={doctor.avatar}
               happy_patients={doctor.happy_patients}
               certificates={doctor.certificates}
