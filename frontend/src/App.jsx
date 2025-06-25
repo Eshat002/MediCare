@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Home from "./screens/Home";
-import Doctors from "./screens/Doctors";
+import DoctorPage from "./screens/DoctorPage";
 import Layout from "./hocs/Layout";
 import useAuthStore from "./stores/authStore";
 import Login from "./screens/Login";
@@ -47,13 +47,7 @@ const App = () => {
             }
           />
 
-              <Route
-            exact
-            path="/doctors"
-            element={
-              <Doctors/>
-            }
-          />
+          <Route exact path="/doctors" element={<DoctorPage />} />
           <Route
             path="/signup"
             element={

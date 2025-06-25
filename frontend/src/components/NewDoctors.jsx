@@ -5,6 +5,7 @@ import { TiArrowRight } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import DoctorCardSkeleton from "./DoctorCardSkeleton";
 import { unauthenticatedApiClient } from "../utils/axiosClient";
+import NewDoctorCardSkeleton from "./NewDoctorCardSkeleton";
 
 // const BaseUrl = import.meta.env.VITE_API_URL;
 
@@ -44,14 +45,10 @@ const NewDoctors = ({ count = 4 }) => {
   if (loading) {
     return (
       <>
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:px-24 px-6 mb-12 items-center">
-          <div className="h-5 bg-gray-300 rounded lg:w-1/4 sm:w-1/2 w-full mb-3"></div>
-          <div className="h-5 bg-gray-300 rounded lg:w-1/4 sm:w-1/2 w-full mb-3"></div>
-        </div>
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-7 gap-5 lg:px-24 px-6 mb-10">
+        <div className="flex flex-col space-y-10 container mx-auto justify-center xl:px-52 px-5">
           {/* Render 6 skeleton doctor cards in 2 rows of 3 items each */}
-          {[...Array(6)].map((_, index) => (
-            <DoctorCardSkeleton key={index} />
+          {[...Array(4)].map((_, index) => (
+            <NewDoctorCardSkeleton key={index} />
           ))}
         </div>
       </>
@@ -62,9 +59,9 @@ const NewDoctors = ({ count = 4 }) => {
     return <div>Error: {error}</div>;
   }
   return (
-    <section className="pb-28" id="NewDoctors">
-      <div className="container mx-auto justify-center lg:px-52 px-6">
-        <div className="doctor-card-container space-y-6 gap-5">
+    <section className="my-16" id="NewDoctors">
+      <div className="container mx-auto justify-center xl:px-52 px-5">
+        <div className="doctor-card-container space-y-10 gap-5">
           {doctors.map((doctor) => (
             <NewDoctorCard
               key={doctor.id}

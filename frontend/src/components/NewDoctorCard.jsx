@@ -17,11 +17,11 @@ const NewDoctorCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className={`doctorCard flex gap-8 ${
+      className={`doctorCard flex sm:flex-row flex-col gap-8 ${
         shadow ? "drop-shadow-[0_15px_10px_rgba(205,127,50,0.2)]" : ""
       }`}
     >
-      <div className="w-1/3">
+      <div className="w-full sm:w-1/3">
         <img
           className="w-full h-auto object-cover border rounded-3xl"
           src={avatar}
@@ -29,16 +29,18 @@ const NewDoctorCard = ({
         />
       </div>
 
-      <div className="w-2/3 flex gap-7">
-        <div className="w-1/4 bg-primaryOrange/10 rounded-3xl flex justify-center items-center">
-          <div className="text-center">
+      <div className="w-full sm:w-2/3 flex sm:flex-row flex-col-reverse gap-7">
+        <div className="sm:w-1/4 w-full bg-primaryOrange/10 p-4 gap-6 rounded-3xl flex flex-row sm:flex-col text-center justify-center items-center">
+          <div>
             <h6 className="text-primaryOrange text-2xl font-semibold mb-1">
               {certificates}
             </h6>
             <p className="text-primaryBlack/70 text-base font-medium">
               Certificates
             </p>
-            <h6 className="text-primaryOrange text-2xl font-semibold mt-8 mb-1">
+          </div>
+          <div>
+            <h6 className="text-primaryOrange text-2xl font-semibold mb-1">
               +{happy_patients}
             </h6>
             <p className="text-primaryBlack/70 text-base font-medium">
@@ -47,7 +49,7 @@ const NewDoctorCard = ({
           </div>
         </div>
 
-        <div className="w-3/4 flex flex-col justify-center">
+        <div className="sm:w-3/4 w-full flex flex-col justify-center">
           <h5 className="text-primaryBlack font-semibold text-2xl mb-1 mt-4">
             Dr. {full_name}{" "}
           </h5>

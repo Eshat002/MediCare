@@ -1,15 +1,16 @@
 import PageTitleCard from "../components/PageTitleCard";
 import NewDoctors from "../components/NewDoctors";
+import Appointment from "../components/Appointment";
 
 const DoctorPage = () => {
   return (
     <div>
-    <PageTitleCard />
+      <PageTitleCard />
 
-    <div className="mt-8">
-       <NewDoctors />
-    </div>
-   
+      <div className="mt-8">
+        <NewDoctors />
+      </div>
+      <Appointment />
     </div>
   );
 };
