@@ -5,7 +5,10 @@ import Appointment from "../components/Appointment";
 const DoctorPage = () => {
   return (
     <div>
-      <PageTitleCard />
+      <PageTitleCard
+        title="Doctors"
+        image="https://images.pexels.com/photos/52527/dentist-pain-borowac-cure-52527.jpeg"
+      />
 
       <div className="mt-8">
         <NewDoctors />

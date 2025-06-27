@@ -1,9 +1,9 @@
-const PageTitleCard = () => {
+const PageTitleCard = ({ title, image }) => {
   return (
-      <div className="relative h-[400px] w-full">
+    <div className="relative h-[400px] w-full">
       {/* Background Image from online source */}
       <img
-        src="https://images.pexels.com/photos/52527/dentist-pain-borowac-cure-52527.jpeg"
+        src={image}
         alt="Scenic landscape"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -14,11 +14,11 @@ const PageTitleCard = () => {
       {/* Page Title on Top */}
       <div className="relative z-10 flex items-center justify-center h-full">
         <h1 className="text-3xl lg:text-5xl font-bold text-white text-center p-5 bg-primaryBlack/70 rounded-2xl">
-         Doctors
+          {title}
         </h1>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PageTitleCard
+export default PageTitleCard;
