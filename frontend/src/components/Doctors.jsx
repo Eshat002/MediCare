@@ -4,7 +4,7 @@ import DoctorCard from "./DoctorCard";
 import { TiArrowRight } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import DoctorCardSkeleton from "./DoctorCardSkeleton";
-import {unauthenticatedApiClient } from "../utils/axiosClient";
+import { unauthenticatedApiClient } from "../utils/axiosClient";
 
 // const BaseUrl = import.meta.env.VITE_API_URL;
 
@@ -21,14 +21,14 @@ const Doctors = ({ count = 6 }) => {
       //     Authorization: `Bearer ${token}`, // Add the token here
       //   },
       // };
-      
+
       try {
-        const response = await  unauthenticatedApiClient.get(
+        const response = await unauthenticatedApiClient.get(
           `/api/doctors/?count=${count}`
         );
 
         setDoctors(response.data);
-        console.log(response)
+        console.log(response);
       } catch (err) {
         setError(err.message);
       } finally {

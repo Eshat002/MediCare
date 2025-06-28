@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "appointment",
     "newsletter",
     "account",
+    "service",
     # thrid_party
     "rest_framework",
     "corsheaders",
@@ -63,26 +64,21 @@ REST_FRAMEWORK = {
 # )
 
 
-
-
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=2),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
-    'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': True,
-    'AUTH_COOKIE': 'refresh_token',
-    'AUTH_COOKIE_SECURE': True,  
-    'AUTH_COOKIE_HTTP_ONLY': True,
-    'AUTH_COOKIE_SAMESITE': 'Lax',
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "AUTH_COOKIE": "refresh_token",
+    "AUTH_COOKIE_SECURE": True,
+    "AUTH_COOKIE_HTTP_ONLY": True,
+    "AUTH_COOKIE_SAMESITE": "Lax",
     "ALGORITHM": "HS256",
     "SIGNING_KEY": SECRET_KEY,
-    'AUTH_TOKEN_CLASSES': (
-        'rest_framework_simplejwt.tokens.AccessToken',
-    )
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
 }
 
- 
 
 DJOSER = {
     "LOGIN_FIELD": "email",
@@ -98,7 +94,10 @@ DJOSER = {
     "ACTIVATION_URL": "activate/{uid}/{token}",
     "SEND_ACTIVATION_EMAIL": True,
     "SOCIAL_AUTH_TOKEN_STRATEGY": "djoser.social.token.jwt.TokenStrategy",
-    "SOCIAL_AUTH_ALLOWED_REDIRECT_URIS": ["http://127.0.0.1:8000/google", "http://127.0.0.1:8000/facebook"],
+    "SOCIAL_AUTH_ALLOWED_REDIRECT_URIS": [
+        "http://127.0.0.1:8000/google",
+        "http://127.0.0.1:8000/facebook",
+    ],
     "SERIALIZERS": {
         "user_create": "account.serializers.UserCreateSerializer",
         "user": "account.serializers.UserCreateSerializer",
@@ -126,7 +125,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
- 
+
 
 ROOT_URLCONF = "main.urls"
 
@@ -160,10 +159,10 @@ DATABASES = {
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_HOST_USER =  config('EMAIL_HOST_USER')
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT")
+EMAIL_USE_TLS = config("EMAIL_USE_TLS")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
 # Password validation

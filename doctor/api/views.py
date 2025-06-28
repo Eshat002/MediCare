@@ -14,7 +14,6 @@ class DoctorListView(ListAPIView):
         count = int(self.request.query_params.get("count", 4))
         return Doctor.objects.all()[:count]
 
- 
 
 class DoctorCreateView(CreateAPIView):
     queryset = Doctor.objects.all()

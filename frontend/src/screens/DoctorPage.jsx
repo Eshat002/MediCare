@@ -11,7 +11,7 @@ const DoctorPage = () => {
       />
 
       <div className="mt-8">
-        <NewDoctors />
+        <NewDoctors count={4} />
       </div>
       <Appointment />
     </div>
