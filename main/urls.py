@@ -12,6 +12,7 @@ urlpatterns = [
     path("api/doctors/", include("doctor.api.urls")),
     path("api/appointments/", include("appointment.api.urls")),
     path("api/newsletter/", include("newsletter.api.urls")),
+    path("api/services/", include("service.api.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
