@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({ title, content, image }) => {
   return (
@@ -11,20 +12,24 @@ const ServiceCard = ({ title, content, image }) => {
       className="ServiceCard xl:px-8 px-7 xl:py-10 py-10 rounded-3xl bg-white"
     >
       <img
-        className="w-full h-auto object-cover border"
+        className="w-full h-auto object-cover border rounded-[40px]"
+        loading="lazy"
         src={image}
         alt="service"
       />
-      <h5 className="text-primaryBlack font-semibold text-2xl mb-1 mt-4">
+      <h5 className="text-primaryBlack font-medium text-2xl mb-1 mt-4">
         {title}{" "}
       </h5>
-      <span className="text-base font-medium text-primaryBlack/70">
+      <p className="text-base font-normal text-primaryBlack/70 my-4 pb-2">
         {content}
-      </span>
+      </p>
       <div>
-        <a href="/" className="px-4 py-2 border bg-primary">
+        <Link
+          to="/doctors"
+          className="px-8 py-2 border bg-primary text-white font-normal rounded-3xl"
+        >
           Read More
-        </a>
+        </Link>
       </div>
     </motion.div>
   );
