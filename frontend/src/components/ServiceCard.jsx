@@ -9,7 +9,7 @@ const ServiceCard = ({ title, content, image }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="ServiceCard xl:px-8 px-7 xl:py-10 py-10 rounded-3xl bg-white"
+      className="ServiceCard lg:px-8 px-0 lg:py-10 py-6 rounded-3xl"
     >
       <img
         className="w-full h-auto object-cover border rounded-[40px]"

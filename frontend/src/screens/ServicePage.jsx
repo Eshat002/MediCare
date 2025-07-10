@@ -1,5 +1,5 @@
 import PageTitleCard from "../components/PageTitleCard";
-import Services from "../components/Services";
+import NewService from "../components/NewService";
 
 const ServicePage = () => {
   return (
@@ -10,7 +10,7 @@ const ServicePage = () => {
       />
 
       <div className="mt-8">
-        <Services />
+        <NewService />
       </div>
     </div>
   );

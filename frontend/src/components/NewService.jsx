@@ -38,7 +38,7 @@ const Services = ({ count = 6 }) => {
   return (
     <section className="mt-2" id="Services">
       <div className="container mx-auto justify-center lg:px-24 px-6">
-        <div className="service-card-container grid lg:grid-cols-2 sm:grid-cols-2 grid-cols-1 xl:gap-7 gap-5">
+        <div className="service-card-container grid lg:grid-cols-2 sm:grid-cols-2 grid-cols-1 sm:gap-7 gap-5">
           {services.map((service) => (
             <ServiceCard
               key={service.id}
