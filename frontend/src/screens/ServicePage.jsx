@@ -1,5 +1,8 @@
 import PageTitleCard from "../components/PageTitleCard";
 import NewService from "../components/NewService";
+import WhyUs from "../components/WhyUs";
+import Statistics from "../components/Statistics";
+import Appointment from "../components/Appointment";
 
 const ServicePage = () => {
   return (
@@ -11,6 +14,15 @@ const ServicePage = () => {
 
       <div className="mt-8">
         <NewService />
+      </div>
+      <div>
+        <WhyUs />
+      </div>
+      <div>
+        <Statistics />
+      </div>
+      <div>
+        <Appointment />
       </div>
     </div>
   );
