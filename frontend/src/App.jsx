@@ -22,6 +22,7 @@ import ResendActivation from "./screens/ResendActivation";
 import Logout from "./screens/Logout";
 import PublicRoute from "./components/PublicRoute";
 import ServicePage from "./screens/ServicePage";
+import AboutPage from "./screens/AboutPage";
 
 const App = () => {
   const { loadUser, isAuthenticated } = useAuthStore();
@@ -50,6 +51,7 @@ const App = () => {
 
           <Route exact path="/doctors" element={<DoctorPage />} />
           <Route exact path="/services" element={<ServicePage />} />
+          <Route exact path="/about" element={<AboutPage />} />
           <Route
             path="/signup"
             element={

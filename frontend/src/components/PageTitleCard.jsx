@@ -1,4 +1,4 @@
-const PageTitleCard = ({ title, image }) => {
+const PageTitleCard = ({ title, image, imagePosition }) => {
   return (
     <div className="relative h-[400px] w-full">
       {/* Background Image from online source */}
@@ -6,6 +6,7 @@ const PageTitleCard = ({ title, image }) => {
         src={image}
         alt="Scenic landscape"
         className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: imagePosition || "center center" }}
       />
 
       {/* Optional overlay to enhance text readability */}
