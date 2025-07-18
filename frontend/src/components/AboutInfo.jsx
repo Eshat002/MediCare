@@ -10,7 +10,7 @@ const AboutInfo = () => {
           <BiSolidQuoteSingleLeft color="skyblue" size={35} />
         </div>
 
-        <p className="mb-8 text-xl font-normal text-primaryBlack/70">
+        <p className="mb-8 sm:text-xl text-base font-normal text-primaryBlack/70">
           Nullam sodales bibendum nulla ut vulputate. Vivamus auctor tincidunt
           urna, ac molestie lectus imperdiet id. Maecenas nisl massa, mollis sed
           sem a, finibus dapibus dui. Phasellus rhoncus, quam id molestie
@@ -20,7 +20,7 @@ const AboutInfo = () => {
           volutpat ipsum. Cras blandit efficitur velit ut consequat. Suspendisse
           potenti.
         </p>
-        <p className="mb-8 text-xl font-normal text-primaryBlack/70">
+        <p className="mb-8 sm:text-xl text-base font-normal text-primaryBlack/70">
           Quisque vitae nisi tempor, ultricies purus et, maximus metus.
           Phasellus tempus a lorem vel ultricies. Pellentesque a pharetra
           tellus, sit amet blandit ante. Morbi sollicitudin lacus ut orci
@@ -30,7 +30,7 @@ const AboutInfo = () => {
           pellentesque ultricies ante at ultricies. Suspendisse vulputate elit
           vel sapien volutpat pharetra. In hac habitasse platea dictumst.
         </p>
-        <p className="text-xl font-normal text-primaryBlack/70">
+        <p className="sm:text-xl text-base font-normal text-primaryBlack/70">
           Integer felis lorem, cursus ac leo quis, tristique elementum dolor. In
           hac habitasse platea dictumst. In hac habitasse platea dictumst. Sed
           interdum tincidunt suscipit. Sed sit amet tincidunt libero. Praesent
