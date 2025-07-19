@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "newsletter",
     "account",
     "service",
+    "achievements",
     # thrid_party
     "rest_framework",
     "corsheaders",
