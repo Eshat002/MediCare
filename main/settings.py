@@ -53,11 +53,13 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
         # "rest_framework.permissions.AllowAny",
     ],
+ 
     "DEFAULT_AUTHENTICATION_CLASSES": (
    
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
+
 
 # AUTHENTICATION_BACKENDS = (
 #     "social_core.backends.google.GoogleOAuth2",
@@ -68,7 +70,7 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=2),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
