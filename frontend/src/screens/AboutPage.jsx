@@ -1,6 +1,7 @@
 import React from "react";
 import PageTitleCard from "../components/PageTitleCard";
 import AboutInfo from "../components/AboutInfo";
+import Achievements from "../components/Achivements";
 
 const AboutPage = () => {
   return (
@@ -14,6 +15,9 @@ const AboutPage = () => {
       </div>
       <div>
         <AboutInfo />
+      </div>
+      <div>
+        <Achievements />
       </div>
     </>
   );

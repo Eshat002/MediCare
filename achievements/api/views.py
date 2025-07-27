@@ -11,15 +11,22 @@ class IsAdminOrReadOnly(BasePermission):
         if request.method in SAFE_METHODS:
             return True  # Allow read-only methods for all
         return request.user and request.user.is_staff  # Write only for admin
+        
 
 class AchievementViewSet(viewsets.ModelViewSet):
     queryset = Achievement.objects.all()
     serializer_class = AchievementSerializer
     permission_classes = [IsAdminOrReadOnly]
 
-  
     def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())[:3]  # limit after filtering
+        # Get count from query params, default to 3
+        count = request.query_params.get("count", 3)
+
+        try:
+            count = int(count)
+        except ValueError:
+            count = 3  # fallback if invalid input
+
+        queryset = self.filter_queryset(self.get_queryset())[:count]
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-
