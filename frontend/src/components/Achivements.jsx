@@ -34,15 +34,16 @@ const Achievements = ({ count = 3 }) => {
   }
 
   return (
-    <section className="my-16" id="Achivements">
-      <div className="container mx-auto justify-center xl:px-52 px-5">
-        <div className="doctor-card-container space-y-10 gap-5">
-          {achivements.map((achivement, index) => (
+    <section className="my-20" id="Achivements">
+      <div className="container mx-auto justify-center xl:max-w-6xl px-5">
+        <SectionHeadline text="Achievements" />
+        <div className="achieve-card-container space-y-24 gap-5 mt-20">
+          {achivements.map((achievement, index) => (
             <AchivementCard
-              key={achivement.id}
-              name={achivement.name}
-              description={achivement.description}
-              certificate={achivement.certificate}
+              key={achievement.id}
+              name={achievement.name}
+              description={achievement.description}
+              certificate={achievement.certificate}
               reverse={index % 2 === 1} // true for even index
             />
           ))}
