@@ -37,7 +37,7 @@ const Achievements = ({ count = 3 }) => {
     <section className="my-20" id="Achivements">
       <div className="container mx-auto justify-center xl:max-w-6xl px-5">
         <SectionHeadline text="Achievements" />
-        <div className="achieve-card-container space-y-24 gap-5 mt-20">
+        <div className="achieve-card-container lg:space-y-24 space-y-16 gap-5 lg:mt-20 mt-12">
           {achivements.map((achievement, index) => (
             <AchivementCard
               key={achievement.id}

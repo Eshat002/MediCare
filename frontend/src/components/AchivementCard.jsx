@@ -19,10 +19,12 @@ const AchievementCard = ({ name, description, certificate, reverse }) => {
         />
       </div>
 
-      <div className="w-full sm:w-2/3 flex flex-col gap-5">
-        <h2 className="font-semibold text-primaryBlack text-3xl">{name}</h2>
+      <div className="w-full sm:w-2/3 flex flex-col gap-6">
+        <h2 className="font-semibold text-primaryBlack lg:text-3xl text-2xl">
+          {name}
+        </h2>
 
-        <p className="font-normal text-primaryBlack/70 text-lg">
+        <p className="font-normal text-primaryBlack/70 lg:text-lg text-base ">
           {description}
         </p>
       </div>
