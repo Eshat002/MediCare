@@ -1,7 +1,11 @@
-import React from "react";
 import PageTitleCard from "../components/PageTitleCard";
 import AboutInfo from "../components/AboutInfo";
 import Achievements from "../components/Achivements";
+
+import Doctors from "../components/Doctors";
+import Statistics from "../components/Statistics";
+import Testimonial from "../components/Testimonial";
+import Appointment from "../components/Appointment";
 
 const AboutPage = () => {
   return (
@@ -18,6 +22,18 @@ const AboutPage = () => {
       </div>
       <div>
         <Achievements />
+      </div>
+      <div>
+        <Doctors />
+      </div>
+      <div>
+        <Statistics />
+      </div>
+      <div>
+        <Testimonial />
+      </div>
+      <div>
+        <Appointment />
       </div>
     </>
   );
