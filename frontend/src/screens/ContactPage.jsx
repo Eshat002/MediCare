@@ -1,7 +1,16 @@
-import React from "react";
+import PageTitleCard from "../components/PageTitleCard";
 
 const ContactPage = () => {
-  return <div>ContactPage</div>;
+  return (
+    <div>
+      <div>
+        <PageTitleCard
+          title="Contact Us"
+          image="https://images.pexels.com/photos/8538870/pexels-photo-8538870.jpeg"
+        />
+      </div>
+    </div>
+  );
 };
 
 export default ContactPage;
