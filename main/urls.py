@@ -14,6 +14,7 @@ urlpatterns = [
     path("api/newsletter/", include("newsletter.api.urls")),
     path("api/services/", include("service.api.urls")),
     path("api/achievements/", include("achievements.api.urls")),
+    path("api/contact/", include("contact.api.urls")),
     path("accounts/", include('django.contrib.auth.urls')),
 
 ]

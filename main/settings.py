@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "account",
     "service",
     "achievements",
+    "contact",
     # thrid_party
     "rest_framework",
     "corsheaders",
