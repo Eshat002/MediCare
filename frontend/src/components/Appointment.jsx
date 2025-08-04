@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import CalenderGray from "../assets/svg/CalenderGray.jsx";
@@ -13,10 +13,9 @@ import {
   unauthenticatedApiClient,
 } from "../utils/axiosClient";
 import useAuthStore from "../stores/authStore.jsx";
- 
 
 const Appointment = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { user, isAuthenticated } = useAuthStore();
 
   const [formData, setFormData] = useState({
@@ -39,7 +38,7 @@ const Appointment = () => {
     setFormData({ ...formData, appointment_date_time: selectedDates[0] });
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
 
@@ -75,7 +74,6 @@ const handleSubmit = async (e) => {
     }
   };
 
-
   return (
     <section className="bg-white flex flex-col items-center justify-center py-20">
       <div className="section-headline-container mb-5">
@@ -84,43 +82,42 @@ const handleSubmit = async (e) => {
       <div className="p-6 w-full max-w-3xl">
         <form onSubmit={handleSubmit}>
           {/* First Name and Last Name */}
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-7 mb-7">
-            <div>
-              <input
-                className={`bg-[#fcfcfc] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none ${
-                  errors.first_name ? "border-red-500" : ""
-                } ${!errors.first_name && "focus:ring-2 focus:ring-primary"}`}
-                id="first_name"
-                name="first_name"
-                type="text"
-                placeholder="First Name"
-                value={formData.first_name}
-                onChange={handleChange}
-              />
-              {errors.first_name && (
-                <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
-                  {errors.first_name}
-                </p>
-              )}
-            </div>
-            <div>
-              <input
-                className={`bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none ${
-                  errors.last_name ? "border-red-500" : "border-gray-300"
-                } ${!errors.last_name && "focus:ring-2 focus:ring-primary"}`}
-                id="last_name"
-                name="last_name"
-                type="text"
-                placeholder="Last Name"
-                value={formData.last_name}
-                onChange={handleChange}
-              />
-              {errors.last_name && (
-                <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
-                  {errors.last_name}
-                </p>
-              )}
-            </div>
+
+          <div>
+            <input
+              className={`bg-[#fcfcfc] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none ${
+                errors.first_name ? "border-red-500" : ""
+              } ${!errors.first_name && "focus:ring-2 focus:ring-primary"}`}
+              id="first_name"
+              name="first_name"
+              type="text"
+              placeholder="First Name"
+              value={formData.first_name}
+              onChange={handleChange}
+            />
+            {errors.first_name && (
+              <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+                {errors.first_name}
+              </p>
+            )}
+          </div>
+          <div>
+            <input
+              className={`bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none ${
+                errors.last_name ? "border-red-500" : "border-gray-300"
+              } ${!errors.last_name && "focus:ring-2 focus:ring-primary"}`}
+              id="last_name"
+              name="last_name"
+              type="text"
+              placeholder="Last Name"
+              value={formData.last_name}
+              onChange={handleChange}
+            />
+            {errors.last_name && (
+              <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+                {errors.last_name}
+              </p>
+            )}
           </div>
 
           {/* Email and Phone */}

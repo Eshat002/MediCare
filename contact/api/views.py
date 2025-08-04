@@ -5,10 +5,12 @@ from django.core.mail import send_mail
 from django.conf import settings
 from ..models import Contact 
 from .serializers import ContactSerializer
+from rest_framework.permissions import AllowAny
 
 class ContactCreateView(generics.CreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
