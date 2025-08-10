@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { FaTelegramPlane } from "react-icons/fa";
+import BtnWithIcon from "./BtnWithIcon.jsx";
+import SectionHeadline from "./SectionHeadline.jsx";
 
 const BaseUrl = import.meta.env.VITE_API_URL;
 
@@ -47,59 +50,83 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="flex justify-center px-4 bg-white pt-10 pb-20">
       <form
-        className="flex flex-col gap-4 p-6 bg-white shadow-lg rounded-lg w-full max-w-3xl"
+        className="flex flex-col gap-7 p-6 rounded-lg w-full max-w-3xl"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-semibold mb-2 text-center">Contact Us</h2>
+        <div className="text-center py-5">
+          <SectionHeadline text="Leave us a message" />
+        </div>
 
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Your Name"
-          className="px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-        {validationErrors.name && (
-          <p className="text-red-500 text-sm">{validationErrors.name}</p>
-        )}
+        {/* Name */}
+        <div className="flex flex-col">
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Your Name"
+            className={`bg-[#fcfcfc] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none ${
+              validationErrors.name ? "border-red-500" : "border-gray-300"
+            } ${!validationErrors.name && "focus:ring-2 focus:ring-primary"}`}
+          />
+          {validationErrors.name && (
+            <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+              {validationErrors.name}
+            </p>
+          )}
+        </div>
 
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Your Email"
-          className="px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-        {validationErrors.email && (
-          <p className="text-red-500 text-sm">{validationErrors.email}</p>
-        )}
+        {/* Email */}
+        <div className="flex flex-col">
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Your Email"
+            className={`bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none ${
+              validationErrors.email ? "border-red-500" : "border-gray-300"
+            } ${!validationErrors.email && "focus:ring-2 focus:ring-primary"}`}
+          />
+          {validationErrors.email && (
+            <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+              {validationErrors.email}
+            </p>
+          )}
+        </div>
 
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Your Message"
-          rows="4"
-          className="px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-        {validationErrors.message && (
-          <p className="text-red-500 text-sm">{validationErrors.message}</p>
-        )}
+        {/* Message */}
+        <div className="flex flex-col">
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Your Message"
+            rows="5"
+            className={`bg-[#FCFCFC] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none ${
+              validationErrors.message ? "border-red-500" : "border-gray-300"
+            } ${
+              !validationErrors.message && "focus:ring-2 focus:ring-primary"
+            }`}
+          />
+          {validationErrors.message && (
+            <p className="text-red-500 text-sm mt-1 first-letter:uppercase">
+              {validationErrors.message}
+            </p>
+          )}
+        </div>
 
-        <button
-          type="submit"
-          className="bg-primary text-white px-5 py-3 rounded-full hover:bg-sky-500"
-        >
-          Send
-        </button>
+        {/* Submit */}
+        <div className="flex justify-center my-4">
+          <BtnWithIcon text="Send" icon={<FaTelegramPlane size={20} />} />
+        </div>
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {/* Status Messages */}
+        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
         {submitted && (
-          <p className="text-green-500 text-sm text-center">
+          <p className="text-green-500 text-md text-center">
             Your message has been sent successfully.
           </p>
         )}
