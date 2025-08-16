@@ -3,6 +3,8 @@ import logo from "../assets/logo.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import BtnWithoutIcon from "./BtnWithoutIcon";
 import useAuthStore from "../stores/authStore";
+import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +12,21 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToForm = () => {
+    const pagesWithoutForm = ["/blog", "/contact"];
+
+    if (pagesWithoutForm.includes(location.pathname)) {
+      // Go to the default form page, e.g. /services
+      navigate("/#appointment-form");
+    } else {
+      // Same page - just scroll to the form section
+      navigate(`${location.pathname}#appointment-form`);
+    }
   };
 
   return (
@@ -24,36 +41,36 @@ const Navbar = () => {
 
         {/* Navbar Links for Desktop */}
         <div className="hidden lg:flex space-x-8">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             Home
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/about"
             className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             About
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/services"
             className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             Services
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/contact"
             className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             Contact
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/blog"
             className="text-primaryBlack text-base hover:text-sky-400 capitalize"
           >
             Blog
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -67,7 +84,7 @@ const Navbar = () => {
 
         {isAuthenticated && (
           <div className="hidden lg:block">
-            <BtnWithoutIcon text="Make Appointment" />
+            <BtnWithoutIcon onClick={goToForm} text="Make Appointment" />
           </div>
         )}
       </div>
@@ -78,40 +95,41 @@ const Navbar = () => {
           isOpen ? "block" : "hidden"
         }`}
       >
-        <a
-          href="#"
+        <Link
+          to="/"
           className="text-primaryBlack pt-2 text-base hover:text-sky-400 capitalize"
         >
           Home
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/about"
           className="text-primaryBlack text-base hover:text-sky-400 capitalize"
         >
           About
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/services"
           className="text-primaryBlack text-base hover:text-sky-400 capitalize"
         >
           Services
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/contact"
           className="text-primaryBlack text-base hover:text-sky-400 capitalize"
         >
           Contact
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/blog"
           className="text-primaryBlack text-base pb-2 hover:text-sky-400 capitalize"
         >
           Blog
-        </a>
-
-        <button className="bg-primary text-white px-6 py-2 rounded-full hover:bg-sky-500">
-          Make Appointment
-        </button>
+        </Link>
+        {isAuthenticated && (
+          <div className="lg:hidden block">
+            <BtnWithoutIcon onClick={goToForm} text="Make Appointment" />
+          </div>
+        )}
       </div>
     </nav>
   );

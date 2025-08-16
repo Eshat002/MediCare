@@ -75,7 +75,10 @@ const Appointment = () => {
   };
 
   return (
-    <section className="bg-white flex flex-col items-center justify-center py-20">
+    <section
+      id="appointment-form"
+      className="bg-white flex flex-col items-center justify-center py-20"
+    >
       <div className="section-headline-container mb-5">
         <SectionHeadline text="Make Appointment" />
       </div>

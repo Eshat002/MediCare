@@ -15,8 +15,7 @@ urlpatterns = [
     path("api/services/", include("service.api.urls")),
     path("api/achievements/", include("achievements.api.urls")),
     path("api/contact/", include("contact.api.urls")),
-    path("accounts/", include('django.contrib.auth.urls')),
-
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

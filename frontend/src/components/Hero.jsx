@@ -120,8 +120,22 @@ import { TiArrowRight } from "react-icons/ti";
 import BtnWithIcon from "./BtnWithIcon.jsx";
 import HeroImage from "../assets/Img/HeroImage.png";
 import HeroImageMobile from "../assets/Img/HeroImageMobile.png";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const goToForm = () => {
+    const pagesWithoutForm = ["/blog", "/contact"];
+
+    if (pagesWithoutForm.includes(location.pathname)) {
+      // Go to the default form page, e.g. /services
+      navigate("/#appointment-form");
+    } else {
+      // Same page - just scroll to the form section
+      navigate(`${location.pathname}#appointment-form`);
+    }
+  };
   return (
     <section className="mt-10 lg:mt-20 mb-20">
       <div className="container mx-auto px-8 lg:px-0 flex flex-col-reverse gap-6 lg:gap-16 lg:flex-row justify-center items-start">
@@ -220,6 +234,7 @@ const Hero = () => {
             <BtnWithIcon
               text="Make Appointment"
               icon={<TiArrowRight size={24} />}
+              onClick={goToForm}
             />
             <div className="time text-primaryOrange font-medium text-base">
               <p>

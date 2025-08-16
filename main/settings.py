@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "service",
     "achievements",
     "contact",
-    # thrid_party
+    "patient",
+    # third_party
     "rest_framework",
     "corsheaders",
     "djoser",
@@ -54,9 +55,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
         # "rest_framework.permissions.AllowAny",
     ],
- 
     "DEFAULT_AUTHENTICATION_CLASSES": (
-   
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }

@@ -24,6 +24,7 @@ import PublicRoute from "./components/PublicRoute";
 import ServicePage from "./screens/ServicePage";
 import AboutPage from "./screens/AboutPage";
 import ContactPage from "./screens/ContactPage";
+import ScrollToHashElement from "./components/ScrollToHashElement";
 
 const App = () => {
   const { loadUser, isAuthenticated } = useAuthStore();
@@ -37,6 +38,7 @@ const App = () => {
   return (
     <Router>
       <Layout>
+        <ScrollToHashElement />
         <Routes>
           <Route
             exact

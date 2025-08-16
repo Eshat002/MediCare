@@ -6,12 +6,13 @@ from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAdminUser, SAFE_METHODS, BasePermission
 from rest_framework.response import Response
 
+
 class IsAdminOrReadOnly(BasePermission):
     def has_permission(self, request, view):
         if request.method in SAFE_METHODS:
             return True  # Allow read-only methods for all
         return request.user and request.user.is_staff  # Write only for admin
-        
+
 
 class AchievementViewSet(viewsets.ModelViewSet):
     queryset = Achievement.objects.all()
