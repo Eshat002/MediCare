@@ -5,6 +5,8 @@ import BtnWithoutIcon from "./BtnWithoutIcon";
 import useAuthStore from "../stores/authStore";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
+import AppointmentBtn from "./AppointmentBtn";
+import { TiArrowRight } from "react-icons/ti";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,7 +86,10 @@ const Navbar = () => {
 
         {isAuthenticated && (
           <div className="hidden lg:block">
-            <BtnWithoutIcon onClick={goToForm} text="Make Appointment" />
+            <AppointmentBtn
+              text="Make Appointment"
+              onClick={() => console.log("dog")}
+            />
           </div>
         )}
       </div>
