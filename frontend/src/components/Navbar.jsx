@@ -84,14 +84,21 @@ const Navbar = () => {
 
         {/* Make Appointment Button for Desktop */}
 
-        {isAuthenticated && (
+        {/* {isAuthenticated && (
           <div className="hidden lg:block">
             <AppointmentBtn
               text="Make Appointment"
               onClick={() => console.log("dog")}
             />
           </div>
-        )}
+        )} */}
+
+        <div className="hidden lg:block">
+          <AppointmentBtn
+            text="Make Appointment"
+            onClick={() => console.log("dog")}
+          />
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -130,11 +137,13 @@ const Navbar = () => {
         >
           Blog
         </Link>
-        {isAuthenticated && (
-          <div className="lg:hidden block">
-            <BtnWithoutIcon onClick={goToForm} text="Make Appointment" />
-          </div>
-        )}
+        <div className="lg:hidden flex justify-start sm:justify-center">
+          <AppointmentBtn
+            text="Make Appointment"
+            CustomPadding="py-2"
+            onClick={() => console.log("dog")}
+          />
+        </div>
       </div>
     </nav>
   );
