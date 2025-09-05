@@ -16,20 +16,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const navigate = useNavigate();
   const location = useLocation();
-
-  const goToForm = () => {
-    const pagesWithoutForm = ["/blog", "/contact"];
-
-    if (pagesWithoutForm.includes(location.pathname)) {
-      // Go to the default form page, e.g. /services
-      navigate("/#appointment-form");
-    } else {
-      // Same page - just scroll to the form section
-      navigate(`${location.pathname}#appointment-form`);
-    }
-  };
 
   return (
     <nav className="bg-white sticky top-0 z-50 py-5">
@@ -141,7 +128,7 @@ const Navbar = () => {
           <AppointmentBtn
             text="Make Appointment"
             CustomPadding="py-2"
-            onClick={() => console.log("dog")}
+            // onClick={() => console.log("dog")}
           />
         </div>
       </div>
