@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
@@ -6,12 +6,8 @@ import CalenderGray from "../assets/svg/CalenderGray.jsx";
 import SectionHeadline from "./SectionHeadline.jsx";
 import BtnWithIcon from "./BtnWithIcon.jsx";
 import { FaTelegramPlane } from "react-icons/fa";
-import axios from "axios";
 import SuccessModal from "./SuccessModal";
-import {
-  authenticatedApiClient,
-  unauthenticatedApiClient,
-} from "../utils/axiosClient";
+import { authenticatedApiClient } from "../utils/axiosClient";
 import useAuthStore from "../stores/authStore.jsx";
 
 const Appointment = () => {
@@ -30,6 +26,18 @@ const Appointment = () => {
   const [errors, setErrors] = useState({});
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
+  // ✅ Auto-fill user details if logged in
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      setFormData((prev) => ({
+        ...prev,
+        first_name: user.first_name || "",
+        last_name: user.last_name || "",
+        email: user.email || "",
+      }));
+    }
+  }, [isAuthenticated, user]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -43,7 +51,7 @@ const Appointment = () => {
     setErrors({});
 
     if (!isAuthenticated) {
-      navigate("/login"); // ⬅️ redirect to login if not authenticated
+      navigate("/login"); // redirect if not logged in
       return;
     }
 
@@ -56,9 +64,9 @@ const Appointment = () => {
       console.log("Appointment Created:", response.data);
 
       setFormData({
-        first_name: "",
-        last_name: "",
-        email: "",
+        first_name: user?.first_name || "",
+        last_name: user?.last_name || "",
+        email: user?.email || "",
         phone: "",
         appointment_date_time: null,
         message: "",
@@ -85,12 +93,11 @@ const Appointment = () => {
       <div className="p-6 w-full max-w-3xl">
         <form onSubmit={handleSubmit}>
           {/* First Name and Last Name */}
-
           <div className="grid md:grid-cols-2 grid-cols-1 gap-7 mb-7">
             <div>
               <input
                 className={`bg-[#fcfcfc] placeholder:text-primaryBlack/60 placeholder:text-base placeholder:font-medium appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none ${
-                  errors.first_name ? "border-red-500" : ""
+                  errors.first_name ? "border-red-500" : "border-gray-300"
                 } ${!errors.first_name && "focus:ring-2 focus:ring-primary"}`}
                 id="first_name"
                 name="first_name"
