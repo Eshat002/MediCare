@@ -26,12 +26,14 @@ const Layout = ({ children }) => {
     "/login",
     // "/activate/:uid/:token",
     "/signup",
-     "/reset-password",
+    "/reset-password",
+    "/dashboard",
   ];
 
+  const hideNavbarRoutes = ["/dashboard"];
   return (
     <div>
-      <Navbar />
+      {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
       {children}
       {/* Render Footer only if the current route is not in the hideFooterRoutes */}
       {!hideFooterRoutes.includes(location.pathname) && <Footer />}
