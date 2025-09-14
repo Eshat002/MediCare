@@ -10,7 +10,7 @@ import Layout from "./hocs/Layout";
 import useAuthStore from "./stores/authStore";
 import Login from "./screens/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./screens/SaaS/Dashboard";
 import { useEffect } from "react";
 import TestLogin from "./screens/TestLogin";
 import ResetPassword from "./screens/ResetPassword";
@@ -24,6 +24,14 @@ import ServicePage from "./screens/ServicePage";
 import AboutPage from "./screens/AboutPage";
 import ContactPage from "./screens/ContactPage";
 import ScrollToHashElement from "./components/ScrollToHashElement";
+import Patients from "./screens/SaaS/Patients";
+import Appointments from "./screens/SaaS/Appoitments";
+import Doctors from "./screens/SaaS/Doctors";
+import Messages from "./screens/SaaS/Messages";
+import Education from "./screens/SaaS/MedicalContent";
+import Inventory from "./screens/SaaS/MedicalInventory";
+import Settings from "./screens/SaaS/Settings";
+import Main from "./screens/SaaS/main";
 
 const App = () => {
   const { loadUser, isAuthenticated } = useAuthStore();
@@ -39,22 +47,13 @@ const App = () => {
       <Layout>
         <ScrollToHashElement />
         <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              // <ProtectedRoute>
-              //   <Home />
-              // </ProtectedRoute>
-
-              <Home />
-            }
-          />
-
-          <Route exact path="/doctors" element={<DoctorPage />} />
-          <Route exact path="/services" element={<ServicePage />} />
-          <Route exact path="/about" element={<AboutPage />} />
-          <Route exact path="/contact" element={<ContactPage />} />
+          {/* Public pages */}
+          <Route path="/" element={<Home />} />
+          <Route path="/doctors" element={<DoctorPage />} />
+          <Route path="/services" element={<ServicePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* Auth pages */}
           <Route
             path="/signup"
             element={
@@ -63,7 +62,6 @@ const App = () => {
               </PublicRoute>
             }
           />
-          {/* activation after signup */}
           <Route path="/activate/:uid/:token" element={<Activate />} />
           <Route path="/resend/activation-url" element={<ResendActivation />} />
           <Route
@@ -88,15 +86,27 @@ const App = () => {
             element={<ResetPasswordConfirm />}
           />
           <Route path="/test-login" element={<TestLogin />} />
+
+          {/* SaaS section (with Sidebar always visible) */}
           <Route
-            path="/dashboard"
+            path="/app"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Main />
               </ProtectedRoute>
             }
-          />
-          {/* Fallback for Invalid URLs */}
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="patients" element={<Patients />} />
+            <Route path="appointments" element={<Appointments />} />
+            <Route path="doctors" element={<Doctors />} />
+            <Route path="messages" element={<Messages />} />
+            <Route path="education" element={<Education />} />
+            <Route path="inventory" element={<Inventory />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
+
+          {/* Fallback */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Layout>

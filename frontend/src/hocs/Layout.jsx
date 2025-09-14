@@ -27,10 +27,26 @@ const Layout = ({ children }) => {
     // "/activate/:uid/:token",
     "/signup",
     "/reset-password",
-    "/dashboard",
+    "/app",
+    "/app/patients",
+    "/app/appointments",
+    "/app/doctors",
+    "/app/messages",
+    "/app/education",
+    "/app/inventory",
+    "/app/settings",
   ];
 
-  const hideNavbarRoutes = ["/dashboard"];
+  const hideNavbarRoutes = [
+    "/app",
+    "/app/patients",
+    "/app/appointments",
+    "/app/doctors",
+    "/app/messages",
+    "/app/education",
+    "/app/inventory",
+    "/app/settings",
+  ];
   return (
     <div>
       {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
