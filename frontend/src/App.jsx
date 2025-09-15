@@ -96,14 +96,46 @@ const App = () => {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Dashboard />} />
-            <Route path="patients" element={<Patients />} />
-            <Route path="appointments" element={<Appointments />} />
-            <Route path="doctors" element={<Doctors />} />
-            <Route path="messages" element={<Messages />} />
-            <Route path="education" element={<Education />} />
-            <Route path="inventory" element={<Inventory />} />
-            <Route path="settings" element={<Settings />} />
+            <Route
+              index
+              element={<Dashboard />}
+              handle={{ title: "Dashboard" }}
+            />
+            <Route
+              path="patients"
+              element={<Patients />}
+              handle={{ title: "Patients" }}
+            />
+            <Route
+              path="appointments"
+              element={<Appointments />}
+              handle={{ title: "Appointments" }}
+            />
+            <Route
+              path="doctors"
+              element={<Doctors />}
+              handle={{ title: "Doctors" }}
+            />
+            <Route
+              path="messages"
+              element={<Messages />}
+              handle={{ title: "Messages" }}
+            />
+            <Route
+              path="education"
+              element={<Education />}
+              handle={{ title: "Education" }}
+            />
+            <Route
+              path="inventory"
+              element={<Inventory />}
+              handle={{ title: "Inventory" }}
+            />
+            <Route
+              path="settings"
+              element={<Settings />}
+              handle={{ title: "Settings" }}
+            />
           </Route>
 
           {/* Fallback */}
