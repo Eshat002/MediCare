@@ -1,13 +1,11 @@
 from django.utils import timezone
 from django.db import models
 from django.conf import settings
+from patient.models import Patient
+
 
 class Appointment(models.Model):
-    patient = models.ForeignKey(
-    settings.AUTH_USER_MODEL,
-    on_delete=models.CASCADE,
-    related_name="appointments"
-)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name="appointments")
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()

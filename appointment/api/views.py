@@ -10,4 +10,4 @@ class AppointmentCreateView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         # Attach the logged-in user as the patient
-        serializer.save(patient=self.request.user)
+        serializer.save(patient=self.request.user.patient)
