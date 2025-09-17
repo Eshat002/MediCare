@@ -32,7 +32,8 @@ class Patient(models.Model):
     phone = models.CharField(max_length=15, unique=True)
     email = models.EmailField()
     address = models.TextField()
-
+    avatar = models.ImageField(upload_to="avatars/", null=True, blank=True)
+    medical_history = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
